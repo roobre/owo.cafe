@@ -1,0 +1,70 @@
+// Dependent colors
+$black: #000000;
+$white: #ffffff;
+
+// Defaults
+$classic-base-color: #282c37;
+$classic-primary-color: #9baec8;
+$classic-secondary-color: #d9e1e8;
+$classic-highlight-color: #2b90d9;
+
+$classic-base-color: #200903;
+$classic-primary-color: #fabf83;
+$classic-secondary-color: #fde6c4;
+$classic-highlight-color: #533128;
+
+$success-green: lighten(#3c754d, 8%);
+
+// Default
+$base-overlay-background: $white !default;
+$base-overlay-background: #fde6c4 !default;
+$valid-value-color: $success-green !default;
+
+
+// Defaults
+$ui-base-color: $classic-secondary-color !default;
+$ui-base-lighter-color: #b0c0cf;
+$ui-primary-color: #9bcbed;
+$ui-secondary-color: $classic-base-color !default;
+$ui-highlight-color: #2b90d9;
+
+$ui-base-color: $classic-secondary-color !default;
+$ui-base-lighter-color: $ui-base-color;
+$ui-primary-color: $classic-primary-color;
+$ui-secondary-color: $classic-secondary-color !default;
+$ui-highlight-color: $classic-highlight-color;
+
+// Defaults
+$primary-text-color: $black !default;
+$darker-text-color: $classic-base-color !default;
+$dark-text-color: #444b5d;
+$action-button-color: #606984;
+
+$primary-text-color: $classic-base-color !default;
+$darker-text-color: $black !default;
+$dark-text-color: $classic-base-color;
+$action-button-color: $classic-highlight-color;
+
+
+// Defaults
+$inverted-text-color: $black !default;
+$lighter-text-color: $classic-base-color !default;
+$light-text-color: #444b5d;
+
+$inverted-text-color: $black !default;
+$lighter-text-color: $classic-base-color !default;
+$light-text-color: $classic-primary-color;
+
+// Newly added colors
+$account-background-color: $base-overlay-background !default;
+
+// Invert darkened and lightened colors
+@function darken($color, $amount) {
+  @return hsl(hue($color), saturation($color), lightness($color) + $amount);
+}
+
+@function lighten($color, $amount) {
+  @return hsl(hue($color), saturation($color), lightness($color) - $amount);
+}
+
+$emojis-requiring-inversion: 'chains';

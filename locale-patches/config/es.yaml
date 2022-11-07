@@ -1,0 +1,369 @@
+---
+es:
+  themes:
+    default: Espresso
+    latte: Latte
+  about:
+    federation_hint_html: Con una cuenta en %{instance} podrás seguir cuentas en %{instance} y en el resto del Fediverso.
+    hosted_on: '%{domain} está basada en Mastodon'
+    learn_more: Más # Mas o mas informacion?
+    logged_in_as_html: Sesión iniciada como %{username}.
+    rules_html: 'A continuación hay un resumen de las normas que debes seguir si quieres tener una cuenta en %{instance}:'
+    see_whats_happening: ¿Qué está pasando?
+    tagline: ''
+    unavailable_content_description:
+      rejecting_media_title: Fotos y vídeos filtrados
+      silenced: Las publicaciones de este servidor solo se mostrarán en tu timeline principal.
+    what_is_mastodon: "¿Qué es Mastodon?"
+  accounts:
+    choices_html: 'Preferencias de %{name}:'
+    featured_tags_hint: Puedes destacar hashtags para que se muestren aquí.
+    link_verified_on: Este enlace fue verificado el %{date}
+    media: Fotos y vídeos
+    moved_html: "%{name} se ha trasladado a %{new_profile_link}:"
+    nothing_here: "Nada por aquí, nada por allá"
+    people_followed_by: Cuentas seguidas por %{name}
+    people_who_follow: Cuentas que siguen a %{name}
+    posts:
+      one: Post
+      other: Posts
+    posts_tab_heading: Posts
+    posts_with_replies: Posts y respuestas
+  aliases:
+    add_new: Crear alias
+    created_msg: El nuevo alias se ha creado correctamente. Puedes empezar el traslado desde la otra cuenta.
+    deleted_msg: El nuevo alias se ha eliminado. El traslado desde la otra cuenta ya no será posible.
+    empty: No tienes ningún alias.
+    hint_html: Si quieres mudarte desde otra cuenta a esta, antes de poder migrar seguidores necesitarás crear un alias. Esta acción por sí misma es <strong>inofensiva y reversible</strong>. <strong>La migración de la cuenta en sí se debe iniciar desde la otra cuenta</strong>.
+    remove: Desvincular alias
+  appearance:
+    advanced_web_interface: Interfaz avanzada
+    advanced_web_interface_hint: 'Interfaz avanzada con múltiples columnas, estilo TweetDeck.'
+    sensitive_content: Contenido sensible
+    toot_layout: Estilo de las publicaciones
+  applications:
+    created: Aplicación creada con éxito
+    destroyed: Aplicación eliminada con éxito
+    invalid_url: La URL proporcionada es incorrecta
+  auth:
+    description:
+      prefix_invited_by_user: "¡@%{name} te invita a unirte a este servidor de Mastodon!"
+      prefix_sign_up: "¡Únete a Mastodon hoy!"
+      suffix: "¡Con una cuenta podrás seguir a gente, publicar novedades, intercambiar mensajes con usuarios de cualquier servidor de Mastodon y más!"
+    invalid_reset_password_token: El token de reinicio de contraseña es inválido o ha expirado. Por favor, solicita uno nuevo.
+    registration_closed: "%{instance} tiene el registro cerrado"
+    setup:
+      email_below_hint_html: Si la dirección de correo electrónico que aparece a continuación es incorrecta, puedes cambiarla aquí. Te enviaremos un nuevo correo electrónico de confirmación.
+      email_settings_hint_html: Hemos enviado un correo de confirmación a %{email}. Si la dirección de correo electrónico es correcta, puedes cambiarla en la configuracion de tu cuenta.
+  authorize_follow:
+    already_following: Ya estás siguiendo a esta cuenta
+    already_requested: Ya has enviado una solicitud de seguimiento a esta cuenta
+    error: Desafortunadamente, ha ocurrido un error buscando la cuenta remota
+    follow: Seguir
+    follow_request: 'Tienes una solicitud de seguimiento de:'
+    following: "Ahora estás siguiendo a:"
+  deletes:
+    success_msg: Tu cuenta ha sido eliminada
+    warning:
+      before: 'Antes de continuar, por favor, lee con atención lo siguiente:'
+  footer:
+    developers: Para desarrolladores
+  generic:
+    validation_errors:
+      one: "¡Algo no está bien! Por favor, revisa los datos introducidos"
+      other: "¡Algo no está bien! Por favor, revisa los datos introducidos"
+  in_memoriam_html: In memoriam.
+  invites:
+    delete: Borrar
+    expired: Caducadas
+  media_attachments:
+    validations:
+      images_and_video: No puedes adjuntar un video a un post si ya contiene imágenes
+      not_ready: No puedes adjuntar archivos que no han terminado de procesarse. ¡Inténtalo de nuevo en un momento!
+      too_many: No puedes adjuntar más de 4 archivos
+  notifications:
+    email_events: Eventos para notificaciones por correo electrónico
+    email_events_hint: 'Selecciona los eventos para los que deseas recibir notificaciones:'
+    other_settings: Otros ajustes de notificaciones
+  pagination:
+    newer: Más reciente
+    next: Siguiente
+    older: Más antiguo
+  polls:
+    errors:
+      over_character_limit: no puede tener más de %{max} caracteres
+      too_few_options: debe tener más de una opción
+      too_many_options: no puede tener más de %{max} opciones
+  preferences:
+    other: Otros
+    posting_defaults: Visibilidad por defecto de los posts
+    public_timelines: Timelines públicas
+  reactions:
+    errors:
+      unrecognized_emoji: no es un emoji válido
+  relationships:
+    mutual: Mutual
+
+  # Delete things Below
+  remote_follow:
+    acct: Escribe tu usuario@dominio desde el que quieres seguir
+    missing_resource: No se pudo encontrar la URL de redirección requerida para tu cuenta
+    no_account_html: "¿No tienes cuenta? Puedes <a href='%{sign_up_path}' target='_blank'>registrarte aqui</a>"
+    proceed: Continuar
+    prompt: 'Vas a seguir a:'
+    reason_html: "¿<strong>¿Por qué es necesario este paso?</strong> <code>%{instance}</code> puede que no sea el servidor donde estás registrado, así que necesitamos redirigirte primero a tu servidor."
+  remote_interaction:
+    favourite:
+      proceed: Proceder a marcar como favorito
+      prompt: 'Quieres marcar como favorita este post:'
+    reblog:
+      proceed: Proceder a repostear
+      prompt: 'Quieres repostear este post:'
+    reply:
+      proceed: Proceder a responder
+      prompt: 'Quieres responder a este post'
+  reports:
+    errors:
+      invalid_rules: no hace referencia a reglas válidas
+  rss:
+    content_warning: 'Advertencia de contenido sensible:'
+    descriptions:
+      account: Posts públicos de @%{acct}
+      tag: 'Posts públicos etiquetados con #%{hashtag}'
+  scheduled_statuses:
+    over_daily_limit: Has superado el límite de %{limit} posts programados para ese día
+    over_total_limit: Has superado el límite de %{limit} posts programados
+    too_soon: La fecha debe ser en el futuro
+  sessions:
+    activity: Última actividad
+    browser: Navegador
+    current_session: Sesión actual
+    description: "%{browser} en %{platform}"
+    explanation: Estos son los navegadores web conectados a tu cuenta de Mastodon.
+    revoke: Revocar
+    revoke_success: Sesión revocada con éxito
+    title: Sesiones
+    view_authentication_history: Ver historial de autenticación de tu cuenta
+  settings:
+    migrate: Migrar tu cuenta
+
+  # Delete things Above
+
+  statuses:
+    boosted_from_html: Reposteado desde %{acct_link}
+    content_warning: 'Contenido sensible: %{warning}'
+    disallowed_hashtags:
+      one: 'contiene un hashtag no permitido: %{tags}'
+      other: 'contiene los siguientes hashtags no permitidos: %{tags}'
+    open_in_web: Abrir en el navegador
+    over_character_limit: Límite de caracteres de %{max} superado
+    pin_errors:
+      ownership: No puedes fijar un post de otra persona
+      reblog: No puedes fijar un repost
+    poll:
+      total_people:
+        one: "%{count} persona"
+        other: "%{count} personas"
+      total_votes:
+        one: "%{count} voto"
+        other: "%{count} votos"
+      vote: Votar
+    show_thread: Mostrar hilo
+    visibilities:
+      direct: Mensaje directo
+      private: Sólo seguidores
+      private_long: Visible solo para tus seguidores
+      public: Público
+      public_long: Visible para todo el mundo
+      unlisted: No destacado
+      unlisted_long: Visible tus seguidores y quien visite tu perfil. No aparecerá en las timelines globales
+  statuses_cleanup:
+    enabled: Borrar posts automáticamente pasado un tiempo
+    enabled_hint: Elimina automáticamente tus posts una vez pase un tiempo especificado, a menos que coincidan con alguna de las excepciones detalladas abajo
+    explanation: Es posible que los posts tarden un poco más del tiempo especificado en borrarse.
+    ignore_reblogs: Ignorar reposts
+    interaction_exceptions: Excepciones basadas en interacciones
+    interaction_exceptions_explanation: Ten en cuenta que no se puede garantizar que se eliminen los posts que están por debajo de los umbrales de favoritos o de reposts si los han superado en algún momento.
+    keep_direct_hint: No se eliminará ninguno de tus mensajes directos
+    keep_media_hint: No se eliminará ningún post con fotos o vídeos
+    keep_pinned_hint: No se eliminará ningún post fijado
+    keep_polls_hint: No se eliminará ninguna de tus encuestas
+    keep_self_bookmark: Mantener posts a los que has añadido un marcador
+    keep_self_bookmark_hint: No se eliminarán tus posts si les has añadido un marcador
+    keep_self_fav: Mantener posts que marcaste como favoritos
+    keep_self_fav_hint: No se eliminarán tus posts que hayas marcado como favoritos
+    min_favs: Mantener posts con un número de favoritos mayor que
+    min_favs_hint: No se eliminarán los posts que hayan recibido más de esta cantidad de favoritos. Deja en blanco para eliminar publicaciones sin importar el número de favoritos
+    min_reblogs: Mantener posts reposteados
+    min_reblogs_hint: No se eliminarán los posts que tengan más de este número de reposts. Deja en blanco para eliminar posts sin importar el número de reposts
+  stream_entries:
+    pinned: Post fijado
+    reblogged: reposteado
+    sensitive_content: Contenido sensible
+
+terms:
+  body_html: |
+    <h2>Política de Privacidad</h2>
+    <h3 id="collect">¿Qué información recogemos?</h3>
+    
+    <ul>
+    <li><em>Información básica sobre su cuenta</em>: Si se registra en este servidor, se le requerirá un nombre de usuario, una dirección de correo electrónico y una contraseña. Además puede incluir información adicional en el perfil como un nombre de perfil y una biografía, y subir una foto de perfil y una imagen de cabecera. El nombre de usuario, nombre de perfil, biografía, foto de perfil e imagen de cabecera siempre son visibles públicamente</li>
+    <li><em>Posts, seguidores, y otra información pública</em>: La lista de gente a la que sigue es mostrada públicamente, al igual que sus seguidores. Cuando publica un mensaje, la fecha y hora es almacenada, así como la aplicación desde la cual publicó el mensaje. Los mensajes pueden contener archivos adjuntos multimedia, como imágenes y vídeos. Las publicaciones públicas y no destacadas están disponibles públicamente. Cuando fijas una entrada en su perfil, también es información disponible públicamente. Sus publicaciones son entregadas a sus seguidores, en algunos casos significa que son entregadas a diferentes servidores y las copias son almacenadas allí. Cuando elimina publicaciones, esto también se transfiere a sus seguidores. La acción de rebloguear o marcar como favorito otra publicación es siempre pública.</li>
+    <li><em>Publicaciones directas y sólo para seguidores</em>: Todos los mensajes se almacenan y procesan en el servidor. Los mensajes sólo para seguidores se entregan a los seguidores y usuarios que se mencionan en ellos, y los mensajes directos se entregan sólo a los usuarios que se mencionan en ellos. En algunos casos significa que se entregan a diferentes servidores y que las copias se almacenan allí. Hacemos un esfuerzo de buena fe para limitar el acceso a esas publicaciones sólo a las personas autorizadas, pero otros servidores pueden no hacerlo. Por lo tanto, es importante revisar los servidores a los que pertenecen sus seguidores. Puede cambiar una opción para aprobar y rechazar nuevos seguidores manualmente en la configuración <em>Por favor, tenga en cuenta que los operadores del servidor y de cualquier servidor receptor pueden ver dichos mensajes</em>, y que los destinatarios pueden capturarlos, copiarlos o volver a compartirlos de alguna otra manera. <em>No comparta ninguna información peligrosa en Mastodon.</em></li>
+    <li><em>Direcciones IP y otros metadatos</em>: Al iniciar sesión, registramos la dirección IP desde la que se ha iniciado sesión, así como el nombre de la aplicación de su navegador. Todas las sesiones iniciadas están disponibles para su revisión y revocación en los ajustes. La última dirección IP utilizada se almacena hasta 12 meses. También podemos conservar los registros del servidor que incluyen la dirección IP de cada solicitud a nuestro servidor.</li>
+    </ul>
+    
+    <hr class="spacer" />
+    
+    <h3 id="use">¿Para qué utilizamos su información?</h3>
+    
+    <p>Toda la información que obtenemos de usted puede ser utilizada de las siguientes maneras:</p>
+    
+    <ul>
+    <li>Para proporcionar la funcionalidad principal de Mastodon. Sólo puedes interactuar con el contenido de otras personas y publicar tu propio contenido cuando estés conectado. Por ejemplo, puedes seguir a otras personas para ver sus mensajes combinados en tu propia línea de tiempo personalizada.</li>
+    <li>Para ayudar a la moderación de la comunidad, por ejemplo, comparando su dirección IP con otras conocidas para determinar la evasión de prohibiciones u otras violaciones.</li>
+    <li>La dirección de correo electrónico que nos proporcione podrá utilizarse para enviarle información, notificaciones sobre otras personas que interactúen con su contenido o para enviarle mensajes, así como para responder a consultas y/u otras solicitudes o preguntas.</li>
+    </ul>
+    
+    <hr class="spacer" />
+    
+    <h3 id="protect">¿Cómo protegemos su información?</h3>
+    
+    <p>Implementamos una variedad de medidas de seguridad para mantener la seguridad de su información personal cuando usted ingresa, envía o accede a su información personal. Entre otras cosas, la sesión de su navegador, así como el tráfico entre sus aplicaciones y la API, están protegidos con SSL, y su contraseña está protegida mediante un algoritmo unidireccional fuerte. Puede habilitar la autenticación de dos factores para un acceso más seguro a su cuenta.</p>
+    
+    <hr class="spacer" />
+    
+    <h3 id="data-retention">¿Cuál es nuestra política de retención de datos?</h3>
+    
+    <p>Haremos un esfuerzo de buena fe para:</p>
+    
+    <ul>
+    <li>Conservar los registros del servidor que contengan la dirección IP de todas las peticiones a este servidor, en la medida en que se mantengan dichos registros, no más de 90 días.</li>
+    <li>Conservar las direcciones IP asociadas a los usuarios registrados no más de 12 meses.</li>
+    </ul>
+    
+    <p>Puede solicitar y descargar un archivo de su contenido, incluidos sus mensajes, archivos adjuntos multimedia, foto de perfil e imagen de cabecera.</p>
+    
+    <p>Puede borrar su cuenta de forma irreversible en cualquier momento.</p>
+    
+    <hr class="spacer"/>
+    
+    <h3 id="cookies">¿Utilizamos cookies?</h3>
+    
+    <p>Sí. Las cookies son pequeños archivos que un sitio o su proveedor de servicios transfiere al disco duro de su ordenador a través de su navegador web (si usted lo permite). Estas cookies permiten al sitio reconocer su navegador y, si tiene una cuenta registrada, asociarla con su cuenta registrada.</p>
+    
+    <p>Utilizamos cookies para entender y guardar sus preferencias para futuras visitas.</p>
+    
+    <hr class="spacer" />
+    
+    <h3 id="disclose">¿Revelamos alguna información a terceros?</h3>
+    
+    <p>No vendemos, comerciamos ni transferimos a terceros su información personal identificable. Nos reservamos el derecho de divulgar su información bajo requerimiento legal.</p>
+    
+    <p>Su contenido público puede ser descargado por otros servidores de la red. Tus mensajes públicos y sólo para seguidores se envían a los servidores donde residen tus seguidores, y los mensajes directos se envían a los servidores de los destinatarios, en la medida en que dichos seguidores o destinatarios residan en un servidor diferente.</p>
+    
+    <p>Cuando usted autoriza a una aplicación a usar su cuenta, dependiendo del alcance de los permisos que usted apruebe, puede acceder a la información de su perfil público, su lista de seguimiento, sus seguidores, sus listas, todos sus mensajes y sus favoritos. Las aplicaciones nunca podrán acceder a su dirección de correo electrónico o contraseña.</p>
+    
+    <hr class="spacer" />
+    
+    <h3 id="children">Uso del sitio por parte de los niños</h3>
+    
+    <p>Nuestro sitio, productos y servicios están dirigidos a personas mayores de 16 años. Si es menor de 16 años, según los requisitos de la GDPR (<a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation_Data_Protection_Regulation">General Data Protection Regulation</a>) no utilice este sitio.</p>
+    
+    <p>Los requisitos legales pueden ser diferentes si este servidor está en otra jurisdicción.</p>
+    
+    <hr class="spacer" />
+    
+    <h3 id="changes">Cambios en nuestra Política de Privacidad</h3>
+    
+    <p>Si decidimos cambiar nuestra política de privacidad, publicaremos esos cambios en esta página.</p>
+    
+    <p>Adaptado originalmente desde <a href="https://github.com/discourse/discourse">la política de privacidad de Discourse</a>.</p>
+  title: Términos del Servicio y Políticas de Privacidad de %{instance}
+  time:
+    formats:
+      default: "%d de %b del %Y, %H:%M"
+      month: "%b %Y"
+      time: "%H:%M"
+  two_factor_authentication:
+    add: Activar
+    disable: Desactivar
+    disabled_success: Autenticación en dos pasos desactivada correctamente
+    edit: Editar
+    enabled: La autenticación en dos pasos está activada
+    enabled_success: Autenticación en dos pasos activada
+    lost_recovery_codes: Los códigos de recuperación te permiten obtener acceso a tu cuenta si pierdes tu teléfono. Si has perdido tus códigos de recuperación, puedes regenerarlos aquí. Tus viejos códigos de recuperación dejarán de ser válidos.
+    methods: Métodos de autenticación en dos pasos
+    otp: Aplicación de autenticación
+    recovery_codes: Hacer copias de seguridad de tus códigos de recuperación
+
+  user_mailer:
+    appeal_approved:
+      action: Ir a tu cuenta
+      explanation: La apelación de la amonestación contra tu cuenta del %{strike_date} que enviaste el %{appeal_date} fue aprobada.
+      subject: Tu apelación del %{date} ha sido aprobada
+      title: Apelación aprobada
+    appeal_rejected:
+      explanation: La apelación de la amonestación contra tu cuenta del %{strike_date} que enviaste el %{appeal_date} fue rechazada.
+      subject: Tu apelación del %{date} ha sido rechazada
+      title: Apelación rechazada
+    backup_ready:
+      explanation: Has solicitado una copia completa de tu cuenta de Mastodon. ¡Ya está preparada para descargar!
+      subject: Tu archivo está preparado para descargar
+      title: Descargar archivo
+    suspicious_sign_in:
+      change_password: cambies tu contraseña
+      details: 'Aquí están los detalles del inicio de sesión:'
+      explanation: Hemos detectado un inicio de sesión en tu cuenta desde una nueva dirección IP.
+      further_actions_html: Si no fuiste tú, te recomendamos que %{action} lo más pronto posible y habilites la autenticación de dos factores para mantener tu cuenta segura.
+      subject: Tu cuenta ha sido accedida desde una nueva dirección IP
+      title: Un nuevo inicio de sesión
+    warning:
+      appeal: Apelar
+      categories:
+        violation: El contenido viola las siguientes normas
+      explanation:
+        delete_statuses: El equipo de %{instance} ha determinado que algunos de tus posts violan una o más normas, y han sido eliminados.
+        mark_statuses_as_sensitive: Algunos de tus posts han sido marcados como contenido sensible por el equipo de %{instance}. Puedes marcar los archivos multimedia como contenido sensible tú mismo cuando postees en el futuro.
+        sensitive: A partir de ahora todos los archivos multimedia que subas serán marcados como contenido sensible y estarán ocultos tras una advertencia.
+        silence: Aún puedes usar tu cuenta, pero solo tus seguidores verán tus posts en este servidor. Otras cuentas siguen pudiendo empezar a seguirte.
+        suspend: Ya no puedes utilizar tu cuenta, tu perfil y el resto de datos ya no son accesibles. Puedes iniciar sesión para solicitar una copia de seguridad de tus datos, que serán eliminados por completo después de 30 días. Conservaremos algunos datos básicos para evitar que crees nuevas cuentas.
+      statuses: 'Posts adjuntos:'
+      subject:
+        delete_statuses: Tus posts en %{acct} han sido eliminadas
+        disable: Tu cuenta %{acct} ha sido deshabilitada
+        mark_statuses_as_sensitive: Algunos de tus posts en %{acct} han sido marcados como contenido sensible
+        none: Advertencia para %{acct}
+        sensitive: Tus posts en %{acct} se marcarán como contenido sensible a partir de ahora
+        silence: Tu cuenta %{acct} ha sido limitada
+        suspend: Tu cuenta %{acct} ha sido suspendida
+      title:
+        delete_statuses: Posts eliminados
+        disable: Cuenta deshabilitada
+        mark_statuses_as_sensitive: Posts marcados como contenido sensible
+        none: Advertencia
+        sensitive: Cuenta marcada como sensible
+        silence: Cuenta limitada
+        suspend: Cuenta suspendida
+    welcome:
+      edit_profile_action: Editar tu perfil
+      edit_profile_step: Puedes personalizar tu perfil añadiendo un avatar, una cabecera, o cambiando tu nombre de usuario. También puedes marcar tu cuenta como privada si quieres aprobar manualmente a nuevos seguidores.
+      explanation: Aquí tienes algunos consejos para empezar
+      final_action: '¡Postea algo!'
+      final_step: 'Incluso sin seguidores, tus post públicos pueden ser vistos por otros, por ejemplo en la timeline de owo.cafe.'
+      full_handle: Nombre de usuario
+      full_handle_hint: Este es el nombre que se utiliza para identificarte.
+      review_preferences_step: Asegúrate de poner tus preferencias, como qué correos te gustaría recibir, o qué nivel de visibilidad tendrán tus posts por defecto. También puedes habilitar la reproducción automática de "GIFs".
+      subject: Bienvenido a %{instance}
+      tip_federated_timeline: 'La timeline global contiene los posts de todo el Fediverso conocido: Todos los usuarios a los que sigue alguna cuenta en este servidor.'
+      tip_following: Para encontrar gente a la que seguir, echa un ojo a la timeline de %{instance} y a la timeline del Fediverso conocido.
+      tip_local_timeline: La timeline de %{instance} contiene todos los posts públicos de %{instance}.
+      tip_mobile_webapp: Puedes usar la web de %{instance} como si fuese una aplicación si tu dispositivo lo soporta.
+      tips: Consejos
+      title: '¡Te damos la bienvenida, %{name}!'
+
+  users:
+    invalid_otp_token: El código de autenticación en dos pasos no es correcto
+    otp_lost_help_html: Si no tienes acceso a ninguno, puedes ponerte en contancto con %{email}
+  verification:
+    explanation_html: 'Puedes <strong> verificarte a ti mismo como el dueño de los links en los metadatos de tu perfil </strong>. Para eso, el sitio vinculado debe contener un vínculo a tu perfil de owo.cafe. El vínculo en tu sitio <strong> debe</strong> tener un atributo <code> rel="me"</code>. El texto del vínculo no importa. Por ejemplo:'

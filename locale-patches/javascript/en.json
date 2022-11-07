@@ -1,0 +1,20 @@
+{
+  "status.hide": "Hide post",
+  "about.domain_blocks.preamble": "Mastodon generally allows you to view content from and interact with users from any other server in the fediverse. These are the exceptions that have been made on this particular server.",
+  "closed_registrations.other_server_instructions": "Since Mastodon is decentralized, you can create an account on another server and still interact with owo.cafe.",
+  "closed_registrations_modal.description": "Creating an account on {domain} is currently not possible, but please keep in mind that you do not need an account specifically on {domain} to interact with people in owo.cafe.",
+  "closed_registrations_modal.preamble": "Mastodon is decentralized, so no matter where you create your account, you will be able to follow and interact with anyone on owo.cafe. You can even self-host it!",
+  "closed_registrations_modal.title": "Signing up on owo.cafe",
+  "compose_form.encryption_warning": "Posts on owo.cafe are not end-to-end encrypted. Do not share any private or sensitive information on owo.cafe.",
+  "error.unexpected_crash.next_steps": "Try refreshing the page. If that does not help, you may still be able to use owo.cafe through a different browser or native app.",
+  "error.unexpected_crash.next_steps_addons": "Try disabling them and refreshing the page. If that does not help, you may still be able to use owo.cafe through a different browser or native app.",
+  "interaction_modal.description.favourite": "With an account on owo.cafe, you can favourite this post to let the author know you appreciate it and save it for later.",
+  "interaction_modal.description.follow": "With an account on owo.cafe, you can follow {name} to receive their posts in your home feed.",
+  "interaction_modal.description.reblog": "With an account on owo.cafe, you can boost this post to share it with your own followers.",
+  "interaction_modal.description.reply": "With an account on owo.cafe, you can respond to this post.",
+  "notifications_permission_banner.how_to_control": "To receive notifications when owo.cafe isn't open, enable desktop notifications. You can control precisely which types of interactions generate desktop notifications through the {icon} button above once they're enabled.",
+  "report.thanks.take_action": "Here are your options for controlling what you see on owo.cafe:",
+  "search_results.statuses_fts_disabled": "Searching posts by their content is not enabled on owo.cafe.",
+  "ui.beforeunload": "Your draft will be lost if you leave owo.cafe.",
+  "compose_form.publish": "Send"
+}

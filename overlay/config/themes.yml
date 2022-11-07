@@ -1,0 +1,5 @@
+default: styles/espresso.scss
+latte: styles/latte.scss
+mastodon: styles/application.scss
+contrast: styles/contrast.scss
+mastodon-light: styles/mastodon-light.scss

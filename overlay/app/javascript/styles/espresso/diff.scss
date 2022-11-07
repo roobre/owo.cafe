@@ -1,0 +1,13 @@
+// Buttons in the compose form have a light background, so they don't look nice in a light color.
+.character-counter,
+.compose-form__buttons > button,
+.compose-form__buttons > div > button,
+.compose-form__buttons > div > div > button,
+.compose-form__buttons > div > div > div > button {
+  color: $ui-base-color !important;
+}
+
+// Show mascot in full size.
+.drawer__inner__mastodon > img {
+  width: 100% !important;
+}
