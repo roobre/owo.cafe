@@ -18,3 +18,24 @@
     color: $dark-text-color !important;
   }
 }
+
+// Make dropdown menu lighter
+.dropdown-menu {
+  background: $ui-primary-color;
+}
+.dropdown-menu__separator {
+  border-bottom: 1px solid darken($ui-primary-color, 8%)
+}
+.dropdown-menu__item {
+  a,
+  button {
+    background: $ui-primary-color;
+
+    &:focus,
+    &:hover,
+    &:active {
+      background: $ui-highlight-color;
+      color: inherit;
+    }
+  }
+}
