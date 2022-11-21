@@ -4,7 +4,6 @@ $white: #ffffff;            // White
 $success-green: #79bd9a !default;    // Padua
 $error-red: #df405a !default;        // Cerise
 $warning-red: #ff5050 !default;      // Sunset Orange
-$gold-star: #ca8f04 !default;        // Dark Goldenrod
 
 $red-bookmark: $warning-red;
 
@@ -19,9 +18,11 @@ $classic-highlight-color: #6364ff;    // Brand purple
 // Ref'd from https://i.pinimg.com/originals/85/ea/6d/85ea6da82ab5346a44504bc9c442699b.jpg
 $success-green: #6d7e5e !default;
 $classic-base-color: #170c06;
-$classic-primary-color: #a18466;
-$classic-secondary-color: #debb93;
-$classic-highlight-color: #b78338; // Copper // TODO: Kiara to find a better color
+$classic-primary-color: #debb93;
+$classic-secondary-color: #a18466;
+$classic-highlight-color: #ca8f04; // Copper // TODO: Kiara to find a better color
+
+$gold-star: $classic-highlight-color !default;        // Dark Goldenrod
 
 // Variables for defaults in UI
 $base-shadow-color: $black !default;
@@ -33,8 +34,8 @@ $error-value-color: $error-red !default;
 
 // Tell UI to use selected colors
 $ui-base-color: $classic-base-color !default;                  // Darkest
-// Color of inline buttons:
-$ui-base-lighter-color: $classic-primary-color !default;       // Ref'd from https://i.pinimg.com/originals/85/ea/6d/85ea6da82ab5346a44504bc9c442699b.jpg
+$ui-base-lighter-color: $classic-secondary-color !default;
+$ui-base-lighter-color: $classic-secondary-color !default;
 $ui-primary-color: $classic-primary-color !default;            // Lighter
 $ui-secondary-color: $classic-secondary-color !default;        // Lightest
 $ui-highlight-color: $classic-highlight-color !default;
@@ -43,11 +44,18 @@ $column-header-bg-color: #665b55;
 
 // Variables for texts
 $primary-text-color: #fff4e6 !default;
-$darker-text-color: $ui-primary-color !default;
-$dark-text-color: $ui-base-lighter-color !default;
-$secondary-text-color: $ui-secondary-color !default;
-$highlight-text-color: lighten($ui-highlight-color, 8%) !default;
-$action-button-color: $ui-base-lighter-color !default;
+// Ref BLUE
+// Color of very secondary text
+$dark-text-color: #665b55 !default;
+// Ref GREEN
+// Color of top bar buttons, and inactive menus
+$darker-text-color: $classic-secondary-color !default;
+// Ref RED
+// Color of handles
+$secondary-text-color: $classic-primary-color !default;
+$highlight-text-color: $classic-highlight-color !default;
+// Color of reply-repost-fav
+$action-button-color: $classic-secondary-color !default;
 $passive-text-color: $gold-star !default;
 $active-passive-text-color: $success-green !default;
 

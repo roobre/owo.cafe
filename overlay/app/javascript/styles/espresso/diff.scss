@@ -11,3 +11,10 @@
 .drawer__inner__mastodon > img {
   width: 100% !important;
 }
+
+// $ui-primary-color is too bright to work well.
+.reply-indicator {
+  a {
+    color: $dark-text-color !important;
+  }
+}
