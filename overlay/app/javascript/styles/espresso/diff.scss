@@ -39,3 +39,17 @@
     }
   }
 }
+
+// Same for emoji picker
+.autosuggest-textarea__suggestions {
+  background: $ui-primary-color;
+}
+
+.autosuggest-textarea__suggestions__item {
+  &:hover,
+  &:focus,
+  &:active,
+  &.selected {
+    background: $ui-highlight-color;
+  }
+}

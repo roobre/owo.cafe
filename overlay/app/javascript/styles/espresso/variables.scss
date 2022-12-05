@@ -28,7 +28,7 @@ $gold-star: $classic-highlight-color !default;        // Dark Goldenrod
 $base-shadow-color: $black !default;
 $base-overlay-background: $black !default;
 $base-border-color: $white !default;
-$simple-background-color: $white !default;
+$simple-background-color: lighten($classic-primary-color, 15%) !default;
 $valid-value-color: $success-green !default;
 $error-value-color: $error-red !default;
 
