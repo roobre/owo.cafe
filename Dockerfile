@@ -37,4 +37,7 @@ COPY --chown=mastodon:mastodon overlay/ /opt/mastodon/
 
 RUN sed -i 's/IMAGE_LIMIT =.*/IMAGE_LIMIT = 5.megabytes/' /opt/mastodon/app/models/media_attachment.rb && \
     sed -i 's/VIDEO_LIMIT =.*/VIDEO_LIMIT = 30.megabytes/' /opt/mastodon/app/models/media_attachment.rb && \
+    sed -i -e 's/500/1024/g' \
+      /opt/mastodon/app/javascript/mastodon/features/compose/components/compose_form.js \
+      /opt/mastodon/app/validators/status_length_validator.rb && \
     OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile
