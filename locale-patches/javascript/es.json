@@ -77,7 +77,7 @@
 
   "account.featured_tags.last_status_never": "No se ha encontrado ningún post.",
   "compose_form.hashtag_warning": "Este post no se mostrará bajo ningún hashtag porque no está listada. Sólo los posts públicos se pueden buscar por hashtag.",
-  "compose_form.lock_disclaimer": "Tu cuenta no está {locked}. Todo el mundo pueden seguirte para ver tus posts solo para seguidores.",
+  "compose_form.lock_disclaimer": "Tu cuenta no es privada. Cualquiera puede seguirte para ver tus posts marcados como \"Solo seguidores\".",
   "confirmations.mute.explanation": "Si silencias a alguien, no verás sus posts seguirá pudiendo ver los tuyos y seguirte.",
 
   "dismissable_banner.community_timeline": "Aquí verás posts de otras personas en {domain}.",
