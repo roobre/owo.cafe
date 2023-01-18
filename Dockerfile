@@ -35,8 +35,8 @@ COPY --chown=mastodon:mastodon --from=locale-patcher /output/javascript /opt/mas
 COPY --chown=mastodon:mastodon --from=locale-patcher /output/config /opt/mastodon/config/locales/
 COPY --chown=mastodon:mastodon overlay/ /opt/mastodon/
 
-RUN sed -i 's/IMAGE_LIMIT =.*/IMAGE_LIMIT = 5.megabytes/' /opt/mastodon/app/models/media_attachment.rb && \
-    sed -i 's/VIDEO_LIMIT =.*/VIDEO_LIMIT = 30.megabytes/' /opt/mastodon/app/models/media_attachment.rb && \
+RUN sed -i 's/IMAGE_LIMIT =.*/IMAGE_LIMIT = 8.megabytes/' /opt/mastodon/app/models/media_attachment.rb && \
+    sed -i 's/VIDEO_LIMIT =.*/VIDEO_LIMIT = 40.megabytes/' /opt/mastodon/app/models/media_attachment.rb && \
     sed -i -e 's/500/1024/g' \
       /opt/mastodon/app/javascript/mastodon/features/compose/components/compose_form.js \
       /opt/mastodon/app/validators/status_length_validator.rb && \
