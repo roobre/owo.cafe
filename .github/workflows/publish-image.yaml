@@ -1,0 +1,39 @@
+name: Publish image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    name: Build and push image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract Mastodon version
+        id: version
+        run: |
+          echo "mastodon=$(sed -nr 's/^ARG MASTODON_VERSION="(.*)"$/\1/p' Dockerfile)" >> "$GITHUB_OUTPUT"
+      - name: Generate tag
+        id: tag
+        run: |
+          echo "bare=${{ steps.version.outputs.mastodon }}" >> "$GITHUB_OUTPUT"
+          # A more semver-correct way of generating this would be to use "+" rather than "sha.".
+          # Unfortunately, image tags cannot contain "+".
+          echo "full=${{ steps.version.outputs.mastodon }}-$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Build
+        run: |
+          docker build \
+            -t ghcr.io/${{ github.repository }}:${{ steps.tag.outputs.bare }} \
+            -t ghcr.io/${{ github.repository }}:${{ steps.tag.outputs.full }} \
+            .
+      - name: Push
+        run: |
+          docker push ghcr.io/${{ github.repository }}:${{ steps.tag.outputs.bare }}
+          docker push ghcr.io/${{ github.repository }}:${{ steps.tag.outputs.full }}
