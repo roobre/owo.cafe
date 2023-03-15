@@ -1,5 +1,5 @@
 ARG MASTODON_VERSION="v4.1.0"
-FROM tootsuite/mastodon:${MASTODON_VERSION} as src
+FROM ghcr.io/mastodon/mastodon:${MASTODON_VERSION} as src
 
 FROM alpine:latest as locale-patcher
 
