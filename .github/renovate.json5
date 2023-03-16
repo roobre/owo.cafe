@@ -4,7 +4,7 @@
     {
       "fileMatch": [ "^Dockerfile$" ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "mastodon/mastodon",
+      "depNameTemplate": "ghcr.io/mastodon/mastodon",
       "matchStrings": [
         "ARG MASTODON_VERSION=\"(?<currentValue>.*)\""
       ]
