@@ -1,4 +1,4 @@
-ARG MASTODON_VERSION="v4.1.0"
+ARG MASTODON_VERSION="v4.1.1"
 FROM ghcr.io/mastodon/mastodon:${MASTODON_VERSION} as src
 
 FROM alpine:latest as locale-patcher
