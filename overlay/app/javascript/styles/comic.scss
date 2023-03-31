@@ -1,0 +1,10 @@
+@font-face {
+  font-family: uwu-comic;
+  src:
+    local("Comic Sans MS"),
+    url('../fonts/comic.ttf');
+}
+
+a, p, span, label, input, button {
+  font-family: uwu-comic, sans-serif !important;
+}
