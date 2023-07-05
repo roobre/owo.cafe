@@ -1,6 +1,7 @@
 ARG MASTODON_VERSION="v4.1.2"
-FROM ghcr.io/mastodon/mastodon:${MASTODON_VERSION} as src
+FROM ghcr.io/mastodon/mastodon:${MASTODON_VERSION} as mastodon
 
+# TODO: locale-patcher could be merged with patcher, but debian does not have yq on their repos yet.
 FROM alpine:latest as locale-patcher
 
 RUN apk add --update jq yq && \
@@ -10,8 +11,8 @@ RUN apk add --update jq yq && \
 
 # Reminder: Wicked docker COPY syntax will copy files inside folder, instead of folder itself.
 COPY locale-patches/ /patches
-COPY --from=src /opt/mastodon/config/locales/ /locales/config
-COPY --from=src /opt/mastodon/app/javascript/mastodon/locales/ /locales/javascript
+COPY --from=mastodon /opt/mastodon/config/locales/ /locales/config
+COPY --from=mastodon /opt/mastodon/app/javascript/mastodon/locales/ /locales/javascript
 
 RUN cd /locales/javascript; \
     for lang in es en; do \
@@ -29,15 +30,25 @@ RUN cd /locales/config; \
     done; \
     done
 
-FROM src
+FROM mastodon as patcher
+
+USER 0
+RUN apt install patch
+
+USER mastodon
+
+COPY patches /patches
+RUN find /patches -type f -name '*.patch' | while read p; do \
+    patch -p1 -d /opt/mastodon < $p; \
+    done
+
+FROM mastodon
 
 COPY --chown=mastodon:mastodon --from=locale-patcher /output/javascript /opt/mastodon/app/javascript/mastodon/locales/
 COPY --chown=mastodon:mastodon --from=locale-patcher /output/config /opt/mastodon/config/locales/
+COPY --chown=mastodon:mastodon --from=patcher /opt/mastodon /opt/mastodon
+# Copy all files, patched or not, from the patcher image.
+# This copy is lightweight as identical files are reused. It does take a few kilobytes for modification times.
 COPY --chown=mastodon:mastodon overlay/ /opt/mastodon/
 
-RUN sed -i 's/IMAGE_LIMIT =.*/IMAGE_LIMIT = 8.megabytes/' /opt/mastodon/app/models/media_attachment.rb && \
-    sed -i 's/VIDEO_LIMIT =.*/VIDEO_LIMIT = 40.megabytes/' /opt/mastodon/app/models/media_attachment.rb && \
-    sed -i -e 's/500/1024/g' \
-      /opt/mastodon/app/javascript/mastodon/features/compose/components/compose_form.js \
-      /opt/mastodon/app/validators/status_length_validator.rb && \
-    OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile
+RUN OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile
