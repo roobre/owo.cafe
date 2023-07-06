@@ -44,11 +44,13 @@ RUN find /patches -type f -name '*.patch' | while read p; do \
 
 FROM mastodon
 
-COPY --chown=mastodon:mastodon --from=locale-patcher /output/javascript /opt/mastodon/app/javascript/mastodon/locales/
-COPY --chown=mastodon:mastodon --from=locale-patcher /output/config /opt/mastodon/config/locales/
-COPY --chown=mastodon:mastodon --from=patcher /opt/mastodon /opt/mastodon
 # Copy all files, patched or not, from the patcher image.
 # This copy is lightweight as identical files are reused. It does take a few kilobytes for modification times.
+COPY --chown=mastodon:mastodon --from=patcher /opt/mastodon /opt/mastodon
+# Copy patched locales.
+COPY --chown=mastodon:mastodon --from=locale-patcher /output/javascript /opt/mastodon/app/javascript/mastodon/locales/
+COPY --chown=mastodon:mastodon --from=locale-patcher /output/config /opt/mastodon/config/locales/
+# Finally, copy overrides.
 COPY --chown=mastodon:mastodon overlay/ /opt/mastodon/
 
 RUN OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile
