@@ -1,4 +1,4 @@
-ARG MASTODON_VERSION="v4.1.6"
+ARG MASTODON_VERSION="v4.1.7"
 FROM ghcr.io/mastodon/mastodon:${MASTODON_VERSION} as mastodon
 
 # TODO: locale-patcher could be merged with patcher, but debian does not have yq on their repos yet.
