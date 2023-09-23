@@ -42,9 +42,18 @@
   }
 }
 
+// Compose form warnings.
 .compose-form__warning {
   background-color: $bg-dark !important;
   color: $action-soft !important;
+}
+.reply-indicator {
+  background-color: $bg-dark !important;
+}
+
+// "Show more" button is too light, force darker text.
+.status__content__spoiler-link {
+  color: $bg-darker !important;
 }
 
 // Espresso theme de-inverts inverted colors in masto, as well as simple-background.
