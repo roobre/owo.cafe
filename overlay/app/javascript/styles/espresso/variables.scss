@@ -1,68 +1,91 @@
 // Commonly used web colors
-$black: #000000;            // Black
-$white: #ffffff;            // White
-$success-green: #79bd9a !default;    // Padua
-$error-red: #df405a !default;        // Cerise
-$warning-red: #ff5050 !default;      // Sunset Orange
+$black: #000000; // Black
+$white: #ffffff; // White
+$red-600: #b7253d !default; // Deep Carmine
+$red-500: #df405a !default; // Cerise
+$grey-600: #4e4c5a; // Trout
+$grey-100: #dadaf3; // Topaz
+
+$success-green: #79bd9a !default; // Padua
+$error-red: $red-500 !default; // Cerise
+$warning-red: #ff5050 !default; // Sunset Orange
+$gold-star: #ca8f04 !default; // Dark Goldenrod
 
 $red-bookmark: $warning-red;
 
 // Values from the classic Mastodon UI
-// Copied here for reference only
-$classic-base-color: #282c37;         // Midnight Express
-$classic-primary-color: #9baec8;      // Echo Blue
-$classic-secondary-color: #d9e1e8;    // Pattens Blue
-$classic-highlight-color: #6364ff;    // Brand purple
+$classic-base-color: #282c37; // Midnight Express
+$classic-primary-color: #9baec8; // Echo Blue
+$classic-secondary-color: #d9e1e8; // Pattens Blue
+$classic-highlight-color: #6364ff; // Brand purple
 
-// owo.cafe overrides
-// Ref'd from https://i.pinimg.com/originals/85/ea/6d/85ea6da82ab5346a44504bc9c442699b.jpg
-$success-green: #6d7e5e !default;
-$classic-base-color: #170c06;
-$classic-primary-color: #debb93;
-$classic-secondary-color: #a18466;
-$classic-highlight-color: #ca8f04; // Copper // TODO: Kiara to find a better color
-
-$gold-star: $classic-highlight-color !default;        // Dark Goldenrod
+// Kiara's espresso palette
+$bg-black: #000000;
+$bg-darker: #21140c;
+$bg-dark: #34251b;
+// Src: https://www.color-hex.com/color-palette/24950
+$bg-highlight: #4f3828; // Substitutes ligthten()ed $bg-dark.
+// $highlight: #e5ab14; // TODO: Kiara's original is too light.
+$highlight: #ca8f04;
+$action: #d9a982;
+$action-soft: #dfc29f;
+$text-dim: #9c856a;
 
 // Variables for defaults in UI
 $base-shadow-color: $black !default;
 $base-overlay-background: $black !default;
 $base-border-color: $white !default;
-$simple-background-color: lighten($classic-primary-color, 15%) !default;
+$simple-background-color: $bg-dark !default; // Emoji picker, textareas, inputs, etc.
 $valid-value-color: $success-green !default;
 $error-value-color: $error-red !default;
 
 // Tell UI to use selected colors
-$ui-base-color: $classic-base-color !default;                  // Darkest
-$ui-base-lighter-color: $classic-secondary-color !default;
-$ui-base-lighter-color: $classic-secondary-color !default;
-$ui-primary-color: $classic-primary-color !default;            // Lighter
-$ui-secondary-color: $classic-secondary-color !default;        // Lightest
-$ui-highlight-color: $classic-highlight-color !default;
+$ui-base-color: $bg-darker !default;
+$ui-base-lighter-color: $bg-dark !default;
 
-$column-header-bg-color: #665b55;
+$ui-primary-color: $action !default;
+$ui-secondary-color: $action-soft !default;
+$ui-highlight-color: $highlight !default;
+
+$ui-button-color: $white !default;
+$ui-button-background-color: $highlight !default;
+$ui-button-focus-background-color: darken($highlight, 7%) !default;
+$ui-button-focus-outline-color: darken($highlight, 7%) !default;
+$ui-button-focus-outline: solid 2px $ui-button-focus-outline-color !default;
+
+$ui-button-secondary-color: $grey-100 !default;
+$ui-button-secondary-border-color: $grey-100 !default;
+$ui-button-secondary-focus-background-color: $grey-600 !default;
+$ui-button-secondary-focus-color: $white !default;
+
+$ui-button-tertiary-color: $bg-dark !default;
+$ui-button-tertiary-border-color: $bg-dark !default;
+$ui-button-tertiary-focus-background-color: $action !default;
+$ui-button-tertiary-focus-color: $bg-darker !default;
+
+$ui-button-destructive-background-color: $red-500 !default;
+$ui-button-destructive-focus-background-color: $red-600 !default;
+
+$ui-button-icon-focus-outline: $ui-button-focus-outline !default;
+$ui-button-icon-hover-background-color: rgba(140, 141, 255, 40%) !default;
 
 // Variables for texts
-$primary-text-color: #fff4e6 !default;
-// Ref BLUE
-// Color of very secondary text
-$dark-text-color: #665b55 !default;
-// Ref GREEN
-// Color of top bar buttons, and inactive menus
-$darker-text-color: $classic-secondary-color !default;
-// Ref RED
-// Color of handles
-$secondary-text-color: $classic-primary-color !default;
-$highlight-text-color: $classic-highlight-color !default;
-// Color of reply-repost-fav
-$action-button-color: $classic-secondary-color !default;
-$passive-text-color: $gold-star !default;
-$active-passive-text-color: $success-green !default;
+$primary-text-color: $white !default;
+$darker-text-color: $ui-primary-color !default;
+$dark-text-color: $text-dim !default; // Muted text, notifications.
+$secondary-text-color: $ui-secondary-color !default;
+$highlight-text-color: lighten($ui-highlight-color, 8%) !default;
+$action-button-color: $action !default;
+$action-button-focus-color: lighten($ui-base-lighter-color, 4%) !default;
+$passive-text-color: $highlight !default;
+$active-passive-text-color: $highlight !default;
 
 // For texts on inverted backgrounds
-$inverted-text-color: $ui-base-color !default;
-$lighter-text-color: $ui-base-lighter-color !default;
-$light-text-color: $ui-primary-color !default;
+// We pretty much force all inverted areas to not be inverted anymore, so we set inverted text colors
+// to be the same as non-inverted ones.
+$inverted-text-color: $white !default; // Text on "replying to" window, emoji picker and boost modal.
+$light-text-color: $action !default; // Darker text in modal.
+$lighter-text-color: $action-soft !default; // Some buttons in compose box.
 
 // Language codes that uses CJK fonts
 $cjk-langs: ja, ko, zh-CN, zh-HK, zh-TW;
@@ -78,3 +101,12 @@ $no-gap-breakpoint: 1175px;
 $font-sans-serif: 'mastodon-font-sans-serif' !default;
 $font-display: 'mastodon-font-display' !default;
 $font-monospace: 'mastodon-font-monospace' !default;
+
+:root {
+  --dropdown-border-color: #{lighten($ui-base-color, 12%)};
+  --dropdown-background-color: #{lighten($ui-base-color, 4%)};
+  --dropdown-shadow: 0 20px 25px -5px #{rgba($base-shadow-color, 0.25)},
+    0 8px 10px -6px #{rgba($base-shadow-color, 0.25)};
+  --modal-background-color: #{darken($ui-base-color, 4%)};
+  --modal-border-color: #{lighten($ui-base-color, 4%)};
+}

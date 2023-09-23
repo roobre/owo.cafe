@@ -1,55 +1,68 @@
-// Buttons in the compose form have a light background, so they don't look nice in a light color.
-.character-counter,
-.compose-form__buttons > button,
-.compose-form__buttons > div > button,
-.compose-form__buttons > div > div > button,
-.compose-form__buttons > div > div > div > button {
-  color: $ui-base-color !important;
+// Make modals dark instead of light
+.boost-modal,
+.confirmation-modal,
+.report-modal,
+.actions-modal,
+.mute-modal,
+.block-modal,
+.compare-history-modal {
+  background-color: $bg-dark !important;
 }
-
-// Show mascot in full size.
-.drawer__inner__mastodon > img {
-  width: 100% !important;
+.boost-modal__action-bar,
+.confirmation-modal__action-bar,
+.mute-modal__action-bar,
+.block-modal__action-bar {
+  background-color: $bg-darker !important;
 }
-
-// $ui-primary-color is too bright to work well.
-.reply-indicator {
-  a {
-    color: $dark-text-color !important;
-  }
-}
-
-// Make dropdown menu lighter
-.dropdown-menu {
-  background: $ui-primary-color;
-}
-.dropdown-menu__separator {
-  border-bottom: 1px solid darken($ui-primary-color, 8%)
-}
-.dropdown-menu__item {
-  a,
-  button {
-    background: $ui-primary-color;
-
-    &:focus,
-    &:hover,
-    &:active {
-      background: $ui-highlight-color;
-      color: inherit;
+// Report modal has special styling.
+.report-dialog-modal {
+  background-color: $bg-darker !important;
+    &__container {
+      border-top-color: $bg-dark !important;
     }
+}
+
+// Emoji picker is also light by default and we don't want light
+.emoji-mart-anchor {
+  &:hover {
+    color: $bg-dark !important;
   }
 }
 
-// Same for emoji picker
+// Autosuggestions must be dark, everything must be dark
 .autosuggest-textarea__suggestions {
-  background: $ui-primary-color;
+  background-color: $bg-darker !important;
 }
-
 .autosuggest-textarea__suggestions__item {
   &:hover,
   &:focus,
   &:active,
   &.selected {
-    background: $ui-highlight-color;
+    background: $bg-dark !important;
   }
+}
+
+.compose-form__warning {
+  background-color: $bg-dark !important;
+  color: $action-soft !important;
+}
+
+// Espresso theme de-inverts inverted colors in masto, as well as simple-background.
+// Change border of inputs to match.
+input[type="text"], select {
+  border-color: $action !important;
+}
+
+// Notification bar is hardcoded to blurple (v4.2.0+)
+.notification-bar-action {
+  color: $highlight !important;
+}
+
+// Mastodon derives extra colors using lighten() for relevant items,
+// which doesn't produce a great palette.
+.drawer__inner,
+.drawer__inner__mastodon,
+.drawer__header,
+.column-link {
+  background-color: $bg-highlight !important;
 }
