@@ -39,7 +39,7 @@ USER mastodon
 
 COPY patches /patches
 RUN find /patches -type f -name '*.patch' | while read p; do \
-    patch -p1 -d /opt/mastodon < $p; \
+    patch -p1 -d /opt/mastodon < $p || exit 1; \
     done
 
 FROM mastodon
