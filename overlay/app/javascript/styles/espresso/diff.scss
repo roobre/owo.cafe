@@ -56,6 +56,11 @@
   color: $bg-darker !important;
 }
 
+// Darker text for selected item in admin UI
+.simple-navigation-active-leaf a {
+  color: $bg-darker !important;
+}
+
 // Espresso theme de-inverts inverted colors in masto, as well as simple-background.
 // Change border of inputs to match.
 input[type="text"], select {
@@ -76,7 +81,14 @@ input[type="text"], select {
 // which doesn't produce a great palette.
 .drawer__inner,
 .drawer__inner__mastodon,
-.drawer__header,
-.column-link {
+.drawer__header {
   background-color: $bg-highlight !important;
+}
+
+// In the deck interface _only_, column links have background, which sucks. Remove that.
+.column-link {
+  background-color: transparent !important;
+  &:hover {
+    background-color: $bg-dark !important;
+  }
 }
