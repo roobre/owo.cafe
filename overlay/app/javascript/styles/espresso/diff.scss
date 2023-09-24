@@ -62,6 +62,11 @@ input[type="text"], select {
   border-color: $action !important;
 }
 
+// Alt text textarea is hardcoded to white
+.setting-text {
+  background-color: $bg-darker !important;
+}
+
 // Notification bar is hardcoded to blurple (v4.2.0+)
 .notification-bar-action {
   color: $highlight !important;
