@@ -56,6 +56,14 @@
   color: $bg-darker !important;
 }
 
+// Post privacy hover/active has highlight background, and we want dark text over that.
+.privacy-dropdown__option {
+  &:hover,
+  &.active {
+    color: $bg-darker !important;
+  }
+}
+
 // Darker text for selected item in admin UI
 .simple-navigation-active-leaf a {
   color: $bg-darker !important;
