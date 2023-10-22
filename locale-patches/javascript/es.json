@@ -24,7 +24,7 @@
   "closed_registrations_modal.description": "{domain} tiene los registros cerrados ahora mismo, pero ten en cuenta que no necesitas una cuenta específicamente en {domain} para interactuar con {domain}.",
   "closed_registrations_modal.preamble": "Mastodon es descentralizado, por lo que no importa dónde crees tu cuenta, podrás seguir e interactuar con cualquier persona en owo.cafe. ¡Incluso puedes alojarlo tú!",
   "closed_registrations_modal.title": "Registrarse en owo.cafe",
-  "compose_form.encryption_warning": "Los posts en owo.cafe no están cifradas de extremo a extremo. No te recomendamos compartir información sensible o privada en owo.cafe, incluyendo mensajes directos.",
+  "compose_form.encryption_warning": "Las menciones privadas no están cifradas extremo a extremo. No te recomendamos usarlas para compartir información sensible o privada.",
   "error.unexpected_crash.next_steps": "Intenta actualizar la página. Si eso no ayuda, es posible que puedas usar owo.cafe a través de otro navegador o aplicación nativa.",
   "error.unexpected_crash.next_steps_addons": "Intenta deshabilitarlos y recarga la página. Si eso no ayuda, podrías usar owo.cafe a través de un navegador web diferente o aplicación nativa.",
   "interaction_modal.description.favourite": "Necesitas una cuenta en owo.cafe para poder marcar como favorito este post.",
