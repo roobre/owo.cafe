@@ -76,6 +76,7 @@ es:
   invites:
     delete: Borrar
     expired: Caducadas
+    prompt: Genera y comparte un enlace con otras personas para darles acceso a owo.cafe
   media_attachments:
     validations:
       images_and_video: No puedes adjuntar un video a un post si ya contiene imágenes
