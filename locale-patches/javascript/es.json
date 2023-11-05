@@ -132,5 +132,10 @@
 
   "status.replied_to": "En respuesta a {name}",
 
-  "navigation_bar.follow_requests": "Solicitudes de seguimiento"
+  "navigation_bar.follow_requests": "Solicitudes de seguimiento",
+  
+  "compose_form.direct_message_warning_learn_more": "Saber más",
+  "navigation_bar.opened_in_classic_interface": "Las páginas específicas, como publicaciones o cuentas, se abren por defecto en la interfaz web clásica.",
+  "footer.get_app": "Descargar la aplicación",
+  "footer.invite": "Invitar a gente"
 }
