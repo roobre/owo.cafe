@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="20.937517mm"
+   height="7.958631mm"
+   viewBox="0 0 20.937517 7.958631"
+   version="1.1"
+   id="svg333"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="owotan-face.svg"
+   inkscape:export-filename="owotan-face.png"
+   inkscape:export-xdpi="3639.4001"
+   inkscape:export-ydpi="3639.4001"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview335"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="3.0502806"
+     inkscape:cx="15.244499"
+     inkscape:cy="-33.767385"
+     inkscape:window-width="2560"
+     inkscape:window-height="1384"
+     inkscape:window-x="2560"
+     inkscape:window-y="26"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs330" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-109.58031,-159.44008)">
+    <circle
+       id="shape5"
+       cx="112.21102"
+       cy="162.07079"
+       fill="#000000"
+       fill-rule="evenodd"
+       stroke="#000000"
+       stroke-width="0.340756"
+       stroke-linecap="square"
+       stroke-linejoin="bevel"
+       r="2.4603298" />
+    <circle
+       id="shape03"
+       cx="127.88712"
+       cy="162.1853"
+       fill="#000000"
+       stroke="#000000"
+       stroke-width="0.340756"
+       stroke-linecap="square"
+       stroke-linejoin="bevel"
+       r="2.4603295" />
+    <ellipse
+       id="shape6"
+       rx="0.76885301"
+       ry="0.73809892"
+       cx="128.78748"
+       cy="161.08665"
+       fill="#ffffff"
+       fill-rule="evenodd"
+       stroke="#ffffff"
+       stroke-width="0.340756"
+       stroke-linecap="square"
+       stroke-linejoin="bevel" />
+    <ellipse
+       id="shape04"
+       rx="0.76885295"
+       ry="0.73809886"
+       cx="113.29372"
+       cy="161.07964"
+       fill="#ffffff"
+       fill-rule="evenodd"
+       stroke="#ffffff"
+       stroke-width="0.340756"
+       stroke-linecap="square"
+       stroke-linejoin="bevel" />
+    <path
+       id="shape7"
+       fill="#ffffff"
+       fill-rule="evenodd"
+       stroke="#000000"
+       stroke-width="0.615082"
+       stroke-linecap="square"
+       stroke-linejoin="bevel"
+       d="m 117.0466,164.77532 c -0.58196,1.22677 -0.40799,1.9589 0.52192,2.19639 0.91613,0.44454 2.34403,-0.48551 2.37037,-1.15256 0.24409,0.92857 0.89648,1.3345 1.95717,1.2178 1.27593,0.0706 1.60213,-0.6978 0.97859,-2.30512"
+       sodipodi:nodetypes="ccccc" />
+    <ellipse
+       id="shape05"
+       rx="0.76885295"
+       ry="0.73809886"
+       cx="128.78748"
+       cy="161.08665"
+       fill="#ffffff"
+       fill-rule="evenodd"
+       stroke="#ffffff"
+       stroke-width="0.340756"
+       stroke-linecap="square"
+       stroke-linejoin="bevel" />
+  </g>
+</svg>
