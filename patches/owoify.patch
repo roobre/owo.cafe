@@ -1,0 +1,28 @@
+diff --git a/app/services/post_status_service.rb b/app/services/post_status_service.rb
+index 8aa43ab24..4bc085aab 100644
+--- a/app/services/post_status_service.rb
++++ b/app/services/post_status_service.rb
+@@ -35,7 +35,7 @@ class PostStatusService < BaseService
+   def call(account, options = {})
+     @account     = account
+     @options     = options
+-    @text        = @options[:text] || ''
++    @text        = @options[:text].gsub(/[Oo]+/, 'owo') || ''
+     @in_reply_to = @options[:thread]
+ 
+     return idempotency_duplicate if idempotency_given? && idempotency_duplicate?
+diff --git a/app/services/update_status_service.rb b/app/services/update_status_service.rb
+index cdfe28365..dcaf824e9 100644
+--- a/app/services/update_status_service.rb
++++ b/app/services/update_status_service.rb
+@@ -108,6 +108,10 @@ class UpdateStatusService < BaseService
+   end
+ 
+   def update_immediate_attributes!
++    if @options.key?(:text)
++      @options[:text] = @options[:text].gsub(/[Oo]+/, 'owo')
++    end
++
+     @status.text         = @options[:text].presence || @options.delete(:spoiler_text) || '' if @options.key?(:text)
+     @status.spoiler_text = @options[:spoiler_text] || '' if @options.key?(:spoiler_text)
+     @status.sensitive    = @options[:sensitive] || @options[:spoiler_text].present? if @options.key?(:sensitive) || @options.key?(:spoiler_text)
