@@ -1,26 +1,59 @@
 diff --git a/app/services/post_status_service.rb b/app/services/post_status_service.rb
-index 8aa43ab24..4bc085aab 100644
+index 8aa43ab24..dc90553fe 100644
 --- a/app/services/post_status_service.rb
 +++ b/app/services/post_status_service.rb
-@@ -35,7 +35,7 @@ class PostStatusService < BaseService
+@@ -15,6 +15,19 @@ class PostStatusService < BaseService
+     end
+   end
+ 
++  def owo_replace(str)
++    words = str.split(' ')
++    modified_words = words.map do |word|
++      if !(word =~ /^\d+$/) && !word.start_with?('@', 'http', ':')
++        word.gsub(/[o]+/, 'owo').gsub(/[O0]+/, 'OWO')
++      else
++        word
++      end
++    end
++    modified_words.join(' ')
++  end
++
++
+   # Post a text status update, fetch and notify remote users mentioned
+   # @param [Account] account Account from which to post
+   # @param [Hash] options
+@@ -35,7 +48,7 @@ class PostStatusService < BaseService
    def call(account, options = {})
      @account     = account
      @options     = options
 -    @text        = @options[:text] || ''
-+    @text        = @options[:text].gsub(/[Oo]+/, 'owo') || ''
++    @text        = owo_replace(@options[:text] || '')
      @in_reply_to = @options[:thread]
  
      return idempotency_duplicate if idempotency_given? && idempotency_duplicate?
 diff --git a/app/services/update_status_service.rb b/app/services/update_status_service.rb
-index cdfe28365..dcaf824e9 100644
+index cdfe28365..e18b78046 100644
 --- a/app/services/update_status_service.rb
 +++ b/app/services/update_status_service.rb
-@@ -108,6 +108,10 @@ class UpdateStatusService < BaseService
+@@ -107,7 +107,23 @@ class UpdateStatusService < BaseService
+     @poll_changed = true if @previous_expires_at != @status.preloadable_poll&.expires_at
    end
  
++  def owo_replace(str)
++    words = str.split(' ')
++    modified_words = words.map do |word|
++      if !(word =~ /^\d+$/) && !word.start_with?('@', 'http', ':')
++        word.gsub(/[o]+/, 'owo').gsub(/[O0]+/, 'OWO')
++      else
++        word
++      end
++    end
++    modified_words.join(' ')
++  end
++
    def update_immediate_attributes!
 +    if @options.key?(:text)
-+      @options[:text] = @options[:text].gsub(/[Oo]+/, 'owo')
++      @options[:text] = owo_replace(@options[:text])
 +    end
 +
      @status.text         = @options[:text].presence || @options.delete(:spoiler_text) || '' if @options.key?(:text)
