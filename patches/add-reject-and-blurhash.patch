@@ -1,0 +1,219 @@
+diff --git a/app/controllers/admin/settings/others_controller.rb b/app/controllers/admin/settings/others_controller.rb
+new file mode 100644
+index 000000000..113d0c84f
+--- /dev/null
++++ b/app/controllers/admin/settings/others_controller.rb
+@@ -0,0 +1,9 @@
++# frozen_string_literal: true
++
++class Admin::Settings::OthersController < Admin::SettingsController
++  private
++
++  def after_update_redirect_path
++    admin_settings_others_path
++  end
++end
+diff --git a/app/lib/activitypub/activity/create.rb b/app/lib/activitypub/activity/create.rb
+index fedfa39de..80926dca6 100644
+--- a/app/lib/activitypub/activity/create.rb
++++ b/app/lib/activitypub/activity/create.rb
+@@ -14,6 +14,8 @@ class ActivityPub::Activity::Create < ActivityPub::Activity
+     else
+       create_status
+     end
++  rescue Mastodon::RejectPayload
++    reject_payload!
+   end
+ 
+   private
+@@ -46,8 +48,12 @@ class ActivityPub::Activity::Create < ActivityPub::Activity
+     )
+   end
+ 
++  def reject_pattern?
++    Setting.reject_pattern.present? && @object['content']&.match?(Setting.reject_pattern)
++  end
++
+   def create_status
+-    return reject_payload! if unsupported_object_type? || non_matching_uri_hosts?(@account.uri, object_uri) || tombstone_exists? || !related_to_local_activity?
++    return reject_payload! if unsupported_object_type? || non_matching_uri_hosts?(@account.uri, object_uri) || tombstone_exists? || !related_to_local_activity? || reject_pattern?
+ 
+     with_redis_lock("create:#{object_uri}") do
+       return if delete_arrived_first?(object_uri) || poll_vote?
+@@ -79,6 +85,9 @@ class ActivityPub::Activity::Create < ActivityPub::Activity
+     @params               = {}
+ 
+     process_status_params
++
++    raise Mastodon::RejectPayload if MediaAttachment.where(id: @params[:media_attachment_ids]).where(blurhash: Setting.reject_blurhash.split(/\r\n/).filter(&:present?).uniq).present?
++
+     process_tags
+     process_audience
+ 
+diff --git a/app/models/form/admin_settings.rb b/app/models/form/admin_settings.rb
+index 7be026d85..84f30e30f 100644
+--- a/app/models/form/admin_settings.rb
++++ b/app/models/form/admin_settings.rb
+@@ -37,6 +37,8 @@ class Form::AdminSettings
+     status_page_url
+     captcha_enabled
+     authorized_fetch
++    reject_pattern
++    reject_blurhash
+   ).freeze
+ 
+   INTEGER_KEYS = %i(
+@@ -79,6 +81,7 @@ class Form::AdminSettings
+   validates :show_domain_blocks_rationale, inclusion: { in: %w(disabled users all) }, if: -> { defined?(@show_domain_blocks_rationale) }
+   validates :media_cache_retention_period, :content_cache_retention_period, :backups_retention_period, numericality: { only_integer: true }, allow_blank: true, if: -> { defined?(@media_cache_retention_period) || defined?(@content_cache_retention_period) || defined?(@backups_retention_period) }
+   validates :site_short_description, length: { maximum: 200 }, if: -> { defined?(@site_short_description) }
++  validates :reject_pattern, regexp_syntax: true, if: -> { defined?(@reject_pattern) }
+   validates :status_page_url, url: true, allow_blank: true
+   validate :validate_site_uploads
+ 
+diff --git a/app/validators/regexp_syntax_validator.rb b/app/validators/regexp_syntax_validator.rb
+new file mode 100644
+index 000000000..57ecf882c
+--- /dev/null
++++ b/app/validators/regexp_syntax_validator.rb
+@@ -0,0 +1,13 @@
++# frozen_string_literal: true
++
++class RegexpSyntaxValidator < ActiveModel::EachValidator
++  def validate_each(record, attribute, value)
++    return if value.blank?
++
++    begin
++      Regexp.compile(value)
++    rescue RegexpError => e
++      record.errors.add(attribute, I18n.t('applications.invalid_regexp', message: e.message))
++    end
++  end
++end
+diff --git a/app/views/admin/settings/others/show.html.haml b/app/views/admin/settings/others/show.html.haml
+new file mode 100644
+index 000000000..8d0a2b1ac
+--- /dev/null
++++ b/app/views/admin/settings/others/show.html.haml
+@@ -0,0 +1,22 @@
++- content_for :page_title do
++  = t('admin.settings.others.title')
++
++- content_for :heading do
++  %h2= t('admin.settings.title')
++  = render partial: 'admin/settings/shared/links'
++
++= simple_form_for @admin_settings, url: admin_settings_others_path, html: { method: :patch } do |f|
++  = render 'shared/error_messages', object: @admin_settings
++
++  %p.lead= t('admin.settings.others.preamble')
++
++  %h4= t('admin.settings.others.activitypub')
++
++  .fields-group
++    = f.input :reject_pattern, wrapper: :with_block_label, as: :text, label: t('admin.settings.reject_pattern.title'), hint: t('admin.settings.reject_pattern.desc_html'), input_html: { rows: 8 }
++
++  .fields-group
++    = f.input :reject_blurhash, wrapper: :with_block_label, as: :text, label: t('admin.settings.reject_blurhash.title'), hint: t('admin.settings.reject_blurhash.desc_html'), input_html: { rows: 8 }
++
++  .actions
++    = f.button :button, t('generic.save_changes'), type: :submit
+diff --git a/app/views/admin/settings/shared/_links.html.haml b/app/views/admin/settings/shared/_links.html.haml
+index d8b697592..aa48b62cf 100644
+--- a/app/views/admin/settings/shared/_links.html.haml
++++ b/app/views/admin/settings/shared/_links.html.haml
+@@ -7,3 +7,4 @@
+       primary.item :discovery, safe_join([fa_icon('search fw'), t('admin.settings.discovery.title')]), admin_settings_discovery_path
+       primary.item :content_retention, safe_join([fa_icon('history fw'), t('admin.settings.content_retention.title')]), admin_settings_content_retention_path
+       primary.item :appearance, safe_join([fa_icon('desktop fw'), t('admin.settings.appearance.title')]), admin_settings_appearance_path
++      primary.item :others, safe_join([fa_icon('cogs fw'), t('admin.settings.others.title')]), admin_settings_others_path
+diff --git a/config/locales/en.yml b/config/locales/en.yml
+index 2b3bfb4c7..7a46671f2 100644
+--- a/config/locales/en.yml
++++ b/config/locales/en.yml
+@@ -763,6 +763,10 @@ en:
+         all: To everyone
+         disabled: To no one
+         users: To logged-in local users
++      others:
++        activitypub: ActivityPub
++        preamble: Other settings, including customizing behavior
++        title: Other settings
+       registrations:
+         preamble: Control who can create an account on your server.
+         title: Registrations
+@@ -771,6 +775,12 @@ en:
+           approved: Approval required for sign up
+           none: Nobody can sign up
+           open: Anyone can sign up
++      reject_blurhash:
++        desc_html: Set a blurhashes to inspect Create Activity media attachments, and refuse Activity if you match
++        title: Reject blurhash
++      reject_pattern:
++        desc_html: Set a regular expression pattern to inspect Create Activity content, and refuse Activity if you match
++        title: Reject Pattern
+       security:
+         authorized_fetch: Require authentication from federated servers
+         authorized_fetch_hint: Requiring authentication from federated servers enables stricter enforcement of both user-level and server-level blocks. However, this comes at the cost of a performance penalty, reduces the reach of your replies, and may introduce compatibility issues with some federated services. In addition, this will not prevent dedicated actors from fetching your public posts and accounts.
+@@ -1028,6 +1038,7 @@ en:
+   applications:
+     created: Application successfully created
+     destroyed: Application successfully deleted
++    invalid_regexp: "The provided Regexp is invalid: %{message}"
+     logout: Logout
+     regenerate_token: Regenerate access token
+     token_regenerated: Access token successfully regenerated
+diff --git a/config/locales/ja.yml b/config/locales/ja.yml
+index 6a72c1ca1..b4c973b20 100644
+--- a/config/locales/ja.yml
++++ b/config/locales/ja.yml
+@@ -757,6 +757,12 @@ ja:
+           approved: 登録には承認が必要
+           none: 誰にも許可しない
+           open: 誰でも登録可
++      reject_blurhash:
++        desc_html: Create Activityの添付画像を検査するblurhashを設定し、一致する場合はActivityを拒否します
++        title: 拒否画像ハッシュ
++      reject_pattern:
++        desc_html: Create Activityのcontentを検査する正規表現パターンを設定し、一致する場合はActivityを拒否します
++        title: 拒否パターン
+       security:
+         authorized_fetch: 連合サーバーによる署名なしでの情報取得を拒否する
+         authorized_fetch_hint: ほかの連合サーバーから受け付けるリクエストに署名を必須にすることで、ユーザーによるブロックおよびドメインブロック両方の効果をより強力にします。ただし連合の処理コストが増えてパフォーマンス面で不利になるほか、このサーバーから送られた反応が届く範囲が狭まったり、連合における互換性の問題を招く可能性もあります。また、この機能は公開投稿やプロフィールへのアクセスをブロックした相手から完全に遮断できるものではありません。
+diff --git a/config/routes/admin.rb b/config/routes/admin.rb
+index 207cb0580..6b1f0e1a1 100644
+--- a/config/routes/admin.rb
++++ b/config/routes/admin.rb
+@@ -50,6 +50,7 @@ namespace :admin do
+     resource :about, only: [:show, :update], controller: 'about'
+     resource :appearance, only: [:show, :update], controller: 'appearance'
+     resource :discovery, only: [:show, :update], controller: 'discovery'
++    resource :others, only: [:show, :update], controller: 'others'
+   end
+ 
+   resources :site_uploads, only: [:destroy]
+diff --git a/config/settings.yml b/config/settings.yml
+index 67297c26c..8200018eb 100644
+--- a/config/settings.yml
++++ b/config/settings.yml
+@@ -38,6 +38,8 @@ defaults: &defaults
+   require_invite_text: false
+   backups_retention_period: 7
+   captcha_enabled: false
++  reject_pattern: ''
++  reject_blurhash: ''
+ 
+ development:
+   <<: *defaults
+diff --git a/lib/exceptions.rb b/lib/exceptions.rb
+index d3b92f4a0..029235560 100644
+--- a/lib/exceptions.rb
++++ b/lib/exceptions.rb
+@@ -8,6 +8,7 @@ module Mastodon
+   class LengthValidationError < ValidationError; end
+   class DimensionsValidationError < ValidationError; end
+   class StreamValidationError < ValidationError; end
++  class RejectPayload < ValidationError; end
+   class RaceConditionError < Error; end
+   class RateLimitExceededError < Error; end
+   class SyntaxError < Error; end
