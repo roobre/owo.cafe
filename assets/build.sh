@@ -36,3 +36,6 @@ done
 # Generate social banner with imagemagic as adding flexible padding is hard to do in inkscape
 convert $outdir/owotan-banner-border.png -background transparent -gravity center -extent 1100x550 $outdir/owotan-banner-social.png
 convert $outdir/owotan-banner-border.png -background transparent -gravity center -extent 1100x350 $outdir/owotan-banner-mascot.png
+
+# Square owotan logo
+convert $outdir/owotan.png -background transparent -gravity center -extent 1024x1024 $outdir/owotan-square.png
