@@ -1,0 +1,26 @@
+// Stolen (with permission) from tech.lgtb.
+.media-gallery__item__badges:not(:has(.media-gallery__alt__label))::after {
+  content: "NO ALT";
+  background: rgb(172 90 0 / 75%);
+  border-radius: 4px;
+  text-align: center;
+  color: #FFF;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  padding: 2px 6px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.audio-player__canvas:not([title]),
+.audio-player__canvas[title=""],
+.video-player video:not([title]),
+.video-player video[title=""] {
+  border-left: 4px solid #ff8500;
+  box-sizing: border-box;
+}
+
+.user-role-7 {
+  --user-role-accent: #ec6cc1;
+}
