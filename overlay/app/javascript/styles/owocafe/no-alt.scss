@@ -1,5 +1,5 @@
 // Stolen (with permission) from tech.lgtb.
-.media-gallery__item__badges:not(:has(.media-gallery__alt__label))::after {
+.media-gallery__item__badges:not(:has(.media-gallery__gifv__label))::after {
   content: "NO ALT";
   background: rgb(172 90 0 / 75%);
   border-radius: 4px;
