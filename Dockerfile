@@ -53,4 +53,3 @@ COPY --chown=root:root --from=locale-patcher /output/config /opt/mastodon/config
 # Finally, copy overrides.
 COPY --chown=root:root overlay/ /opt/mastodon/
 
-RUN OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile
