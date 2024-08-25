@@ -30,15 +30,15 @@ RUN cd /locales/config; \
   done; \
   done
 
-FROM mastodon as patcher
+FROM alpine:latest as patcher
 
-USER 0
-RUN apt install patch
+COPY --from=mastodon /opt/mastodon /opt/mastodon
 
-USER mastodon
+RUN apk add patch
 
 COPY patches /patches
 RUN find /patches -type f -name '*.patch' | while read p; do \
+  echo "Applying $p" && \
   patch -p1 -d /opt/mastodon < $p || exit 1; \
   done
 
@@ -46,11 +46,11 @@ FROM mastodon
 
 # Copy all files, patched or not, from the patcher image.
 # This copy is lightweight as identical files are reused. It does take a few kilobytes for modification times.
-COPY --chown=mastodon:mastodon --from=patcher /opt/mastodon /opt/mastodon
+COPY --from=patcher /opt/mastodon /opt/mastodon
 # Copy patched locales.
-COPY --chown=mastodon:mastodon --from=locale-patcher /output/javascript /opt/mastodon/app/javascript/mastodon/locales/
-COPY --chown=mastodon:mastodon --from=locale-patcher /output/config /opt/mastodon/config/locales/
+COPY --chown=root:root --from=locale-patcher /output/javascript /opt/mastodon/app/javascript/mastodon/locales/
+COPY --chown=root:root --from=locale-patcher /output/config /opt/mastodon/config/locales/
 # Finally, copy overrides.
-COPY --chown=mastodon:mastodon overlay/ /opt/mastodon/
+COPY --chown=root:root overlay/ /opt/mastodon/
 
 RUN OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile
