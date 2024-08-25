@@ -5,9 +5,9 @@ FROM ghcr.io/mastodon/mastodon:${MASTODON_VERSION} as mastodon
 FROM alpine:latest as locale-patcher
 
 RUN apk add --update jq yq && \
-    mkdir -p /locales/config /locales/javascript && \
-    mkdir /patches && \
-    mkdir -p /output/config /output/javascript
+  mkdir -p /locales/config /locales/javascript && \
+  mkdir /patches && \
+  mkdir -p /output/config /output/javascript
 
 # Reminder: Wicked docker COPY syntax will copy files inside folder, instead of folder itself.
 COPY locale-patches/ /patches
@@ -15,20 +15,20 @@ COPY --from=mastodon /opt/mastodon/config/locales/ /locales/config
 COPY --from=mastodon /opt/mastodon/app/javascript/mastodon/locales/ /locales/javascript
 
 RUN cd /locales/javascript; \
-    for lang in es en; do \
-    for j in $lang*.json; do \
-    echo Patching $j; \
-    jq -s '.[0] * .[1]' /locales/javascript/$j /patches/javascript/$lang.json > /output/javascript/$j; \
-    done; \
-    done
+  for lang in es en; do \
+  for j in $lang*.json; do \
+  echo Patching $j; \
+  jq -s '.[0] * .[1]' /locales/javascript/$j /patches/javascript/$lang.json > /output/javascript/$j; \
+  done; \
+  done
 
 RUN cd /locales/config; \
-    for lang in es en; do \
-    for y in $lang*; do \
-    echo Patching $y; \
-    yq '. *= load("/patches/config/'$lang'.yaml")' /locales/config/$y > /output/config/$y; \
-    done; \
-    done
+  for lang in es en; do \
+  for y in $lang*; do \
+  echo Patching $y; \
+  yq '. *= load("/patches/config/'$lang'.yaml")' /locales/config/$y > /output/config/$y; \
+  done; \
+  done
 
 FROM mastodon as patcher
 
@@ -39,8 +39,8 @@ USER mastodon
 
 COPY patches /patches
 RUN find /patches -type f -name '*.patch' | while read p; do \
-    patch -p1 -d /opt/mastodon < $p || exit 1; \
-    done
+  patch -p1 -d /opt/mastodon < $p || exit 1; \
+  done
 
 FROM mastodon
 
