@@ -6,6 +6,13 @@ on:
 jobs:
   build:
     name: Build image
+    strategy:
+      matrix:
+        image:
+          - dockerfile: Dockerfile
+            name: ${{ github.repository }}
+          - dockerfile: Dockerfile.streaming
+            name: ${{ github.repository }}-streaming
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,7 +21,8 @@ jobs:
       - name: Build
         uses: docker/build-push-action@v6
         with:
+          file: ${{ matrix.image.dockerfile }}
           tags: |
-            ${{ github.repository }}:ci
+            ${{ matrix.image.name }}:ci
           cache-from: type=gha
           cache-to: type=gha,mode=max
