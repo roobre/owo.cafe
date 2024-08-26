@@ -1,4 +1,5 @@
-ARG MASTODON_VERSION="v4.3.0-beta.1"
+# CI/CD greps the following line to figure out the image build tag. Keep it as it is, including quotes.
+ARG MASTODON_VERSION="v4.3.0"
 FROM ghcr.io/mastodon/mastodon:${MASTODON_VERSION} as mastodon
 
 # TODO: locale-patcher could be merged with patcher, but debian does not have yq on their repos yet.
