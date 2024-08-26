@@ -11,6 +11,14 @@
       "matchStrings": [
         "ARG MASTODON_VERSION=\"(?<currentValue>.*)\""
       ]
+    },
+    {
+      "fileMatch": [ "^Dockerfile.streaming$" ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/mastodon/mastodon-streaming",
+      "matchStrings": [
+        "ARG MASTODON_VERSION=\"(?<currentValue>.*)\""
+      ]
     }
   ]
 }
