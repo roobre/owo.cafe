@@ -1,0 +1,3 @@
+# We don't patch or otherwise modify the streaming API. This is just for uniformity and avoid image drift.
+ARG MASTODON_VERSION="v4.3.0-beta.1"
+FROM ghcr.io/mastodon/mastodon-streaming:${MASTODON_VERSION} AS mastodon
