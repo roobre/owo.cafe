@@ -20,5 +20,11 @@
         "ARG MASTODON_VERSION=\"(?<currentValue>.*)\""
       ]
     }
+  ],
+  "packageRules": [
+    {
+      "matchDepNames": ["ghcr.io/mastodon/*"],
+      "groupName": "masotodon",
+    }
   ]
 }
