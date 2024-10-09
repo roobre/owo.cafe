@@ -2,16 +2,12 @@
   overflow: visible !important;
 }
 
-.status__content__text>.emojione,
-.status__content__text>.custom-emoji,
-.status__content__text>*>.emojione,
-.status__content__text>*>.custom-emoji {
+.status__content__text .emojione,
+.status__content__text .custom-emoji {
   transition: transform 0.2s ease-in-out;
 }
 
-.status__content__text>.emojione:hover,
-.status__content__text>.custom-emoji:hover,
-.status__content__text>*>.emojione:hover,
-.status__content__text>*>.custom-emoji:hover {
+.status__content__text .emojione:hover,
+.status__content__text .custom-emoji:hover {
   transform: scale(2.5);
 }
