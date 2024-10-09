@@ -48,6 +48,7 @@ FROM mastodon as rebuilder
 USER root
 RUN apt update && apt install -y nodejs npm 
 RUN npm install -g yarn corepack
+RUN corepack enable && corepack prepare --activate && yarn workspaces focus --production @mastodon/mastodon
 
 WORKDIR /opt/mastodon
 
@@ -57,11 +58,7 @@ COPY --from=locale-patcher /output/config /opt/mastodon/config/locales/
 COPY overlay/ /opt/mastodon/
 
 # Recompile assets, now with patches and overlays.
-RUN \
-  corepack enable && \
-  corepack prepare --activate && \
-  yarn workspaces focus --production @mastodon/mastodon && \
-  SECRET_KEY_BASE_DUMMY=1 \
+RUN SECRET_KEY_BASE_DUMMY=1 \
   bundle exec rails assets:precompile && \
   rm -rf /opt/mastodon/tmp /opt/mastodon/node_modules
 
