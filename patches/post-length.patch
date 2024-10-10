@@ -1,25 +1,12 @@
-diff --git a/app/javascript/mastodon/features/compose/components/compose_form.jsx b/app/javascript/mastodon/features/compose/components/compose_form.jsx
-index 9222b2dc8..c56e10ced 100644
---- a/app/javascript/mastodon/features/compose/components/compose_form.jsx
-+++ b/app/javascript/mastodon/features/compose/components/compose_form.jsx
-@@ -100,7 +100,7 @@ class ComposeForm extends ImmutablePureComponent {
-     const fulltext = this.getFulltextForCharacterCounting();
-     const isOnlyWhitespace = fulltext.length !== 0 && fulltext.trim().length === 0;
- 
--    return !(isSubmitting || isUploading || isChangingUpload || length(fulltext) > 500 || (isOnlyWhitespace && !anyMedia));
-+    return !(isSubmitting || isUploading || isChangingUpload || length(fulltext) > 1024 || (isOnlyWhitespace && !anyMedia));
-   };
- 
-   handleSubmit = (e) => {
-@@ -297,7 +297,7 @@ class ComposeForm extends ImmutablePureComponent {
-             </div>
- 
-             <div className='character-counter__wrapper'>
--              <CharacterCounter max={500} text={this.getFulltextForCharacterCounting()} />
-+              <CharacterCounter max={1024} text={this.getFulltextForCharacterCounting()} />
-             </div>
-           </div>
-         </div>
+From d895857db82d5b2da6d5703d298e2245fce3dd8a Mon Sep 17 00:00:00 2001
+From: Nadia Santalla <nadia@santalla.io>
+Date: Sun, 25 Aug 2024 20:15:02 +0200
+Subject: [PATCH] owocafe: custom post length in backend
+
+---
+ app/validators/status_length_validator.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/app/validators/status_length_validator.rb b/app/validators/status_length_validator.rb
 index dc841ded3..5ac92aa57 100644
 --- a/app/validators/status_length_validator.rb
@@ -33,3 +20,6 @@ index dc841ded3..5ac92aa57 100644
    URL_PLACEHOLDER_CHARS = 23
    URL_PLACEHOLDER = 'x' * 23
  
+-- 
+2.46.0
+

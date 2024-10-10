@@ -9,6 +9,13 @@ on:
 jobs:
   publish:
     name: Build and push image
+    strategy:
+      matrix:
+        image:
+          - dockerfile: Dockerfile
+            name: ${{ github.repository }}
+          - dockerfile: Dockerfile.streaming
+            name: ${{ github.repository }}-streaming
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,7 +27,7 @@ jobs:
       - name: Extract Mastodon version
         id: version
         run: |
-          echo "mastodon=$(sed -nr 's/^ARG MASTODON_VERSION="(.*)"$/\1/p' Dockerfile)" >> "$GITHUB_OUTPUT"
+          echo "mastodon=$(sed -nr 's/^ARG MASTODON_VERSION="(.*)"$/\1/p' '${{ matrix.image.dockerfile }}')" >> "$GITHUB_OUTPUT"
       - name: Generate tag
         id: tag
         run: |
@@ -34,8 +41,9 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
+          file: ${{ matrix.image.dockerfile }}
           tags: |
-            ghcr.io/${{ github.repository }}:${{ steps.tag.outputs.bare }}
-            ghcr.io/${{ github.repository }}:${{ steps.tag.outputs.full }}
+            ghcr.io/${{ matrix.image.name }}:${{ steps.tag.outputs.bare }}
+            ghcr.io/${{ matrix.image.name }}:${{ steps.tag.outputs.full }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

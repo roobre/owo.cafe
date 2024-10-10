@@ -1,5 +1,4 @@
 {
-  "status.hide": "Hide post",
   "about.domain_blocks.preamble": "Mastodon generally allows you to view content from and interact with users from any other server in the fediverse. These are the exceptions that have been made on this particular server.",
   "closed_registrations.other_server_instructions": "Since Mastodon is decentralized, you can create an account on another server and still interact with owo.cafe.",
   "closed_registrations_modal.description": "Creating an account on {domain} is currently not possible, but please keep in mind that you do not need an account specifically on {domain} to interact with people in owo.cafe.",
@@ -14,7 +13,6 @@
   "interaction_modal.description.reply": "With an account on owo.cafe, you can respond to this post.",
   "notifications_permission_banner.how_to_control": "To receive notifications when owo.cafe isn't open, enable desktop notifications. You can control precisely which types of interactions generate desktop notifications through the {icon} button above once they're enabled.",
   "report.thanks.take_action": "Here are your options for controlling what you see on owo.cafe:",
-  "search_results.statuses_fts_disabled": "Searching posts by their content is not enabled on owo.cafe.",
   "ui.beforeunload": "Your draft will be lost if you leave owo.cafe.",
   "compose_form.publish": "Send"
 }
