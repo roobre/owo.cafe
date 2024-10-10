@@ -1,7 +1,7 @@
 // Stolen (with permission) from tech.lgtb.
 .media-gallery__item__badges:not(:has(.media-gallery__alt__label))::after {
   content: "NO ALT";
-  background: rgb(172 90 0 / 75%);
+  background: var(--error-background-color);
   border-radius: 4px;
   text-align: center;
   color: #FFF;
