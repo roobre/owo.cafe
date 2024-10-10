@@ -12,6 +12,7 @@
   "status.cannot_reblog": "No puedes repostear este post",
   "status.reblog": "Repostear",
   "status.reblogged_by": "Reposteado por {name}",
+  "status.continued_thread": "Hilo",
 
   "status.reblogs.empty": "Nadie ha reposteado esto aún. Cuando alguien lo haga, aparecerá aquí.",
   "compose_form.publish": "Enviar",
