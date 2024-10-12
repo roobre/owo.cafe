@@ -15,6 +15,7 @@
     {
       "fileMatch": [ "^Dockerfile$" ],
       "datasourceTemplate": "node-version",
+      "depNameTemplate": "node",
       "matchStrings": [
         "ARG NODE_VERSION=\"(?<currentValue>.*)\""
       ]
