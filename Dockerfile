@@ -46,9 +46,15 @@ RUN find /patches -type f -name '*.patch' | while read p; do \
 FROM mastodon as rebuilder
 
 USER root
-RUN apt update && apt install -y nodejs npm 
-RUN npm install -g yarn corepack
-RUN corepack enable && corepack prepare --activate && yarn workspaces focus --production @mastodon/mastodon
+ARG TARGETARCH
+ARG NODE_VERSION="v20.17.0"
+ENV NODEARCH=${TARGETARCH/amd/x}
+RUN curl -o- https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-${NODEARCH}.tar.gz | tar -xzC /opt/
+ENV PATH=${PATH}:/opt/node-${NODE_VERSION}-linux-${NODEARCH}/bin/
+RUN npm install -g yarn corepack && \
+  corepack enable && \
+  corepack prepare --activate && \
+  yarn workspaces focus --production @mastodon/mastodon
 
 WORKDIR /opt/mastodon
 
