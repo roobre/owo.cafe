@@ -13,6 +13,12 @@
       ]
     },
     {
+      "fileMatch": [ "^Dockerfile$" ],
+      "datasourceTemplate": "node-version",
+      "matchStrings": [
+        "ARG NODE_VERSION=\"(?<currentValue>.*)\""
+      ]
+    },    {
       "fileMatch": [ "^Dockerfile.streaming$" ],
       "datasourceTemplate": "docker",
       "depNameTemplate": "ghcr.io/mastodon/mastodon-streaming",
