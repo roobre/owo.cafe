@@ -1,9 +1,9 @@
 # CI/CD greps the following line to figure out the image build tag. Keep it as it is, including quotes.
 ARG MASTODON_VERSION="v4.3.0"
-FROM ghcr.io/mastodon/mastodon:${MASTODON_VERSION} as mastodon
+FROM ghcr.io/mastodon/mastodon:${MASTODON_VERSION} AS mastodon
 
 # TODO: locale-patcher could be merged with patcher, but debian does not have yq on their repos yet.
-FROM alpine:3.20.3 as locale-patcher
+FROM alpine:3.20.3 AS locale-patcher
 
 RUN apk add --update jq yq && \
   mkdir -p /locales/config /locales/javascript && \
@@ -31,7 +31,7 @@ RUN cd /locales/config; \
   done; \
   done
 
-FROM alpine:3.20.3 as patcher
+FROM alpine:3.20.3 AS patcher
 
 COPY --from=mastodon /opt/mastodon /opt/mastodon
 
@@ -43,7 +43,7 @@ RUN find /patches -type f -name '*.patch' | while read p; do \
   patch -p1 -d /opt/mastodon < $p || exit 1; \
   done
 
-FROM mastodon as rebuilder
+FROM mastodon AS rebuilder
 
 USER root
 ARG TARGETARCH
