@@ -3,7 +3,7 @@ ARG MASTODON_VERSION="v4.3.0"
 FROM ghcr.io/mastodon/mastodon:${MASTODON_VERSION} as mastodon
 
 # TODO: locale-patcher could be merged with patcher, but debian does not have yq on their repos yet.
-FROM alpine:latest as locale-patcher
+FROM alpine:3.20.3 as locale-patcher
 
 RUN apk add --update jq yq && \
   mkdir -p /locales/config /locales/javascript && \
@@ -31,7 +31,7 @@ RUN cd /locales/config; \
   done; \
   done
 
-FROM alpine:latest as patcher
+FROM alpine:3.20.3 as patcher
 
 COPY --from=mastodon /opt/mastodon /opt/mastodon
 
