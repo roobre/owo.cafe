@@ -49,8 +49,8 @@ USER root
 ARG TARGETARCH
 ARG NODE_VERSION="20.18.0"
 ENV NODEARCH=${TARGETARCH/amd/x}
-RUN curl -o- https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-${NODEARCH}.tar.gz | tar -xzC /opt/
-ENV PATH=${PATH}:/opt/node-${NODE_VERSION}-linux-${NODEARCH}/bin/
+RUN curl -o- https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${NODEARCH}.tar.gz | tar -xzC /opt/
+ENV PATH=${PATH}:/opt/node-v${NODE_VERSION}-linux-${NODEARCH}/bin/
 RUN npm install -g yarn corepack && \
   corepack enable && \
   corepack prepare --activate && \
