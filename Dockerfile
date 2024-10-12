@@ -35,7 +35,7 @@ FROM alpine:3.20.3 AS patcher
 
 COPY --from=mastodon /opt/mastodon /opt/mastodon
 
-RUN apk add patch
+RUN apk add --update patch
 
 COPY patches /patches
 RUN find /patches -type f -name '*.patch' | while read p; do \
