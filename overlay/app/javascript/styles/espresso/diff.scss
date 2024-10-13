@@ -103,3 +103,8 @@ div.admin-wrapper {
 .sidebar ul li a.selected {
   background-color: var(--background-color-raised);
 }
+
+// Settitngs UI: Darker background for select items.
+.simple_form select {
+  background-color: var(--background-color) !important;
+}
