@@ -49,6 +49,7 @@
   "compose_form.spoiler_placeholder": "Aviso de contenido sensible",
   "compose_form.spoiler.marked": "Aviso de contenido sensible habilitado",
   "compose_form.spoiler.unmarked": "Sin aviso de contenido sensible",
+  "privacy.unlisted.long": "No se muestra en la timeline pública",
   "privacy.unlisted.additional": "Se muestra públicamente en tu perfil, pero no aparece en la timeline local.",
 
   "account.media": "Fotos y vídeos",
