@@ -89,6 +89,7 @@
   "account.posts": "Posts",
   "account.posts_with_replies": "Posts y menciones",
   "account.statuses_counter": "{count, plural, one {{counter} Post} other {{counter} Posts}}",
+  "account.follow_back": "Seguir",
   "column.pins": "Posts fijados",
   "explore.trending_statuses": "Posts",
   "navigation_bar.pins": "Posts fijados",
