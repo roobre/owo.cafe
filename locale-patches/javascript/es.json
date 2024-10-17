@@ -49,8 +49,11 @@
   "compose_form.spoiler_placeholder": "Aviso de contenido sensible",
   "compose_form.spoiler.marked": "Aviso de contenido sensible habilitado",
   "compose_form.spoiler.unmarked": "Sin aviso de contenido sensible",
+  "privacy.private.short": "Solo seguidores",
   "privacy.unlisted.long": "No se muestra en la timeline pública",
   "privacy.unlisted.additional": "Se muestra públicamente en tu perfil, pero no aparece en la timeline local.",
+  "privacy.direct.short": "Cuentas mencionadas (DM)",
+  "privacy.direct.long": "Visible para las cuentas mencionadas en el post",
 
   "account.media": "Fotos y vídeos",
   "community.column_settings.media_only": "Solo fotos y vídeos",
