@@ -6,6 +6,8 @@
   "keyboard_shortcuts.boost": "Repostear",
   "keyboard_shortcuts.toot": "Redacta un nuevo post",
   "notification.reblog": "{name} ha reposteado tu publicación",
+  "notification.reblog.name_and_others_with_link": "{name} y <a>{count, plural, one {# más} other {# más}}</a> repostearon tu post",
+  "notification.favourite.name_and_others_with_link": "{name} y <a>{count, plural, one {# más} other {# más}}</a> marcaron tu post como favorito",
   "notifications.column_settings.reblog": "Reposts:",
   "notifications.filter.boosts": "Reposts",
   "status.cancel_reblog_private": "Deshacer repost",
