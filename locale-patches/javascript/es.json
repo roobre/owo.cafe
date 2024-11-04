@@ -109,6 +109,7 @@
   "filter_modal.added.short_explanation": "Este post ha sido añadido a la categoría de filtros \"{title}.\"",
   "filter_modal.select_filter.title": "Filtrar este post",
   "filter_modal.title.status": "Filtrar un post",
+  "filter_warning.matches_filter": "Filtrado por {title}",
   "interaction_modal.title.favourite": "Marcar como favorito el post {name}",
   "interaction_modal.title.reblog": "Repostear el post de {name}",
   "interaction_modal.title.reply": "Responder al post de {name}",
