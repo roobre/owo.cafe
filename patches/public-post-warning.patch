@@ -1,4 +1,4 @@
-From 74fcd92b5acd211bfebddb81475209cf01a083a2 Mon Sep 17 00:00:00 2001
+From 94012cf99ff4da4fd2963b8123d47679f28ee657 Mon Sep 17 00:00:00 2001
 From: Nadia Santalla <nadia@santalla.io>
 Date: Thu, 22 Aug 2024 14:30:59 +0200
 Subject: [PATCH] owocafe: add warning for public posts
@@ -8,7 +8,7 @@ Subject: [PATCH] owocafe: add warning for public posts
  1 file changed, 15 insertions(+), 1 deletion(-)
 
 diff --git a/app/javascript/mastodon/features/compose/containers/warning_container.jsx b/app/javascript/mastodon/features/compose/containers/warning_container.jsx
-index 7a212342c..c852fa6b1 100644
+index 7a212342c7..6c516b2c56 100644
 --- a/app/javascript/mastodon/features/compose/containers/warning_container.jsx
 +++ b/app/javascript/mastodon/features/compose/containers/warning_container.jsx
 @@ -13,9 +13,10 @@ const mapStateToProps = state => ({
@@ -31,7 +31,7 @@ index 7a212342c..c852fa6b1 100644
 +    return <Warning message={
 +      <FormattedMessage
 +        id='compose_form.owocafe_public_warning'
-+        defaultMessage="Estás posteando con visibilidad 🌍 Pública. Recuerda que owo.cafe tiene {rules} respecto a la temática y tono de los posts públicos."
++        defaultMessage="Este post se mostrará a todos los usuarios de owo.cafe. Tenemos {rules} respecto a la temática y tono de los con visibilidad 🌍 Pública."
 +        values={{
 +          rules: <a href="https://wiki.owo.cafe/owocafe/timeline-publica" target="_blank">normas específicas</a>
 +        }}
@@ -51,5 +51,5 @@ index 7a212342c..c852fa6b1 100644
  
  export default connect(mapStateToProps)(WarningWrapper);
 -- 
-2.46.0
+2.47.0
 
